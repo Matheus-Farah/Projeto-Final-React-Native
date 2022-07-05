@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Image, KeyboardAvoidingView, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { TextInputMask } from 'react-native-masked-text'
+
 import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
@@ -18,6 +20,11 @@ export interface UsuarioType {
 };
 
 export const Cadastro = () => {
+
+
+    const [cell, setCell] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [data, setData] = useState('');
 
     const [dados, setDados] = useState<UsuarioType>({
         nome: "",
@@ -51,6 +58,7 @@ export const Cadastro = () => {
     }, [usuarioTransfer]);
 
 
+
     return (
         <KeyboardAvoidingView style={styles.container}>
             <View style={styles.header}>
@@ -76,28 +84,43 @@ export const Cadastro = () => {
                     placeholder={"Digite seu nome:"}
                     onChangeText={(e) => setDados({ ...dados, nome: e })}
                 />
+
                 <Text style={styles.inputTitle}>CPF:</Text>
-                <TextInput
-                    style={styles.input}
-                    keyboardType={"numeric"}
+                <TextInputMask style={styles.input}
+                    type={'cpf'}
+                    value={cpf}
+                    onChangeText={text => setCpf(text)}
                     placeholder={"___.___.___-__"}
                     onChangeText={(e) => setDados({ ...dados, cpf: e })}
                 />
+                {/* REALIZAR TRATAMENTO NO PLACEHOLDER */}
+
                 <Text style={styles.inputTitle}>Telefone:</Text>
-                <TextInput
-                    style={styles.input}
-                    textContentType={"telephoneNumber"}
-                    keyboardType={"number-pad"}
+                <TextInputMask style={styles.input}
+                    type={'cel-phone'}
+                    options={{
+                        maskType: 'BRL',
+                        withDDD: true,
+                        dddMask: '(99) '
+                    }}
+                    value={cell}
+                    onChangeText={Text => setCell(Text)}
                     placeholder={"(__)_____-____"}
                     onChangeText={(e) => setDados({ ...dados, telefone: e })}
                 />
+
                 <Text style={styles.inputTitle}>Data de Nascimento:</Text>
-                <TextInput
-                    style={styles.input}
-                    keyboardType={"numeric"}
-                    placeholder={"__/__/____"}
+
+                <TextInputMask style={styles.input}
+                    type={'datetime'}
+                    options={{
+                        maskType:"BRL"
+                    }}
+                    value={data}
                     onChangeText={(e) => setDados({ ...dados, dataNascimento: e })}
+                    placeholder={"dd/mm/yyyy"}
                 />
+
                 <Text style={styles.inputTitle}>Email:</Text>
                 <TextInput
                     style={styles.input}
@@ -106,6 +129,7 @@ export const Cadastro = () => {
                     placeholder={"SeuEmail@email.com"}
                     onChangeText={(e) => setUsuario({ ...usuarioTransfer, email: e })}
                 />
+
                 <Text style={styles.inputTitle}>Senha:</Text>
                 <TextInput
                     style={styles.input}
@@ -114,6 +138,7 @@ export const Cadastro = () => {
                     placeholder={"Digite sua senha:"}
                     onChangeText={(e) => setUsuario({ ...usuarioTransfer, senha: e })}
                 />
+
                 <Text style={styles.inputTitle}>Nome de Usuário:</Text>
                 <TextInput
                     style={styles.input}
@@ -121,17 +146,16 @@ export const Cadastro = () => {
                     keyboardType={"default"}
                     placeholder={"Digite seu Username"}
                     onChangeText={(e) => setUsuario({ ...usuarioTransfer, username: e })}
-                    
-                />
-            </ScrollView>
-            <View>
+                 />
+
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => cadastrar()}
                     >
                     <Text style={{ fontWeight: "bold" }}>Cadastrar</Text>
                 </TouchableOpacity>
-            </View>
+
+            </ScrollView>
         </KeyboardAvoidingView>
     )
 }
