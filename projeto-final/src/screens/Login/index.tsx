@@ -1,12 +1,12 @@
 import React from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
 
 export const Login = () => {
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container}>
             <View>
                 <Image
                     source={Cordeirinho}
@@ -45,6 +45,6 @@ export const Login = () => {
                     <Text style={[styles.subtitleText, {borderBottomWidth: 2}]}>Cadastre-se aqui</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
