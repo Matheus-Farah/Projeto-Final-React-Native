@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Cadastro } from './src/screens/Cadastro';
 import { Login } from './src/screens/Login';
+import { Perfil } from './src/screens/Perfil';
 
 export default function App() {
   return (
