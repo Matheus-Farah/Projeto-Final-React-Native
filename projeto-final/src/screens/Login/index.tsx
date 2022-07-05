@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, StyleSheet, Animated, Keyboard } from "react-native";
+
 import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
@@ -66,6 +67,7 @@ export const Login = () => {
         }
         
     return (
+
         <KeyboardAvoidingView style={styles.background}>
             <View style={styles.containerLogo}>
                 <Animated.Image
@@ -73,6 +75,7 @@ export const Login = () => {
                     width: logo.x,
                     height: logo.y,
                 }]}
+
                     source={Cordeirinho}
                 
                 />
