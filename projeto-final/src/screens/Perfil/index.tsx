@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
 
@@ -16,38 +17,43 @@ export const Perfil = () => {
 
 
     return (
-        <View style={styles.container}>
-            <View >
-                <Image
-                    source={Cordeirinho}
-                    style={styles.image}
-                />
-            </View>
-            <View style={styles.username}>
-                <Text style={{fontSize: 28}}>{username}</Text>
-            </View>
+        <LinearGradient style={styles.gradient} colors={['#37A8D9', '#E1F0F6']}>
+            <ScrollView>
+                <View style={styles.container}>
 
-            <View>
-                <Text style={{fontSize: 26, marginTop: 10}}>Informações Pessoais:</Text>
-                <View style={styles.infoPessoal}>
-                    
-                    <Text style={styles.infoText}>{nome}</Text>
-                    <Text style={styles.infoText}>{email}</Text>
-                    <Text style={styles.infoText}>{date}</Text>
-                    <Text style={styles.infoText}>{telefone}</Text>
+                    <View >
+                        <Image
+                            source={Cordeirinho}
+                            style={styles.image}
+                        />
+                    </View>
+                    <View style={styles.username}>
+                        <Text style={{ fontSize: 28 }}>{username}</Text>
+                    </View>
+
+                    <View>
+                        <Text style={{ fontSize: 26, marginTop: 10 }}>Informações Pessoais:</Text>
+                        <View style={styles.infoPessoal}>
+
+                            <Text style={styles.infoText}>{nome}</Text>
+                            <Text style={styles.infoText}>{email}</Text>
+                            <Text style={styles.infoText}>{date}</Text>
+                            <Text style={styles.infoText}>{telefone}</Text>
+                        </View>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={{ fontSize: 28 }}>Adicionar Endereço</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={styles.buttonExit}>
+                            <Text style={{ fontSize: 28 }}>Sair</Text>
+                        </TouchableOpacity>
+
+                    </View>
                 </View>
-            </View>
-            <View>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={{fontSize:28}}>Adicionar Endereço</Text>
-                </TouchableOpacity>
-            </View>
-            <View>
-                <TouchableOpacity style={styles.buttonExit}>
-                    <Text style={{fontSize:28}}>Sair</Text>
-                </TouchableOpacity>
-                
-            </View>
-        </View>
+            </ScrollView>
+        </LinearGradient>
     )
 }

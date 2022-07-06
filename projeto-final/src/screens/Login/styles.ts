@@ -1,15 +1,16 @@
 import { Platform, StyleSheet } from "react-native"
 
 export const styles = StyleSheet.create({
+    
     background:{
         flex: 1,
         alignItems: "center",
-        backgroundColor: '#F0F6F9',
     },
     containerLogo: {
         flex: 1,
         justifyContent: "center",
         // backgroundColor: '#1616',
+        
     },
     container:{
         marginVertical: 20,
@@ -25,6 +26,7 @@ export const styles = StyleSheet.create({
         borderWidth:2,
         borderColor: 'black',
         marginTop: 40,
+        shadowOpacity: 1,
     },
     input: {
         marginHorizontal: 15,
@@ -35,7 +37,7 @@ export const styles = StyleSheet.create({
         padding: Platform.OS === 'ios' ? 15 : 10,
         borderRadius: 10,
         height: 50,
-        width: '90%',
+        width: 299,
         marginBottom: 10,
         backgroundColor:'#fff',
     },
@@ -64,6 +66,16 @@ export const styles = StyleSheet.create({
     subtitleText: {
         fontSize:18,
         fontWeight:"bold",
+    },
+    headerText: {
+        display: "flex",
+        flexDirection: 'column',
+        marginTop:30,
+    },
+    titleText: {
+        
+        fontSize: 32,
+        paddingHorizontal: 20
     },
 
 })
