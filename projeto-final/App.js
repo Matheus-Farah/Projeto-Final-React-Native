@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Login } from './src/screens/Login';
 import { Cadastro } from './src/screens/Cadastro';
 import { Routes } from './src/routes';
+import { ProvedorCarrinho } from './src/context/CarrinhoContext';
 
 
 const Stack = createStackNavigator();
@@ -27,9 +28,11 @@ function MyStack() {
 export default function App() {
   
   return (
+    <ProvedorCarrinho>
     <NavigationContainer>
       <MyStack/>
     </NavigationContainer>
+    </ProvedorCarrinho>
   );
 }
 
