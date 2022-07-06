@@ -2,7 +2,7 @@ import axios from "axios";
 import { UsuarioType } from "../screens/Cadastro";
 import jwt_decode from "jwt-decode";
 import { UserType } from "../screens/Login";
-import { EnderecoType } from "../screens/Endereços";
+import { EnderecoType } from "../screens/Enderecos";
 
 const api = axios.create({
     baseURL: 'https://api-cdelivery.herokuapp.com',
