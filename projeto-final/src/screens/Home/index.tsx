@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, KeyboardAvoidingView, Text, TouchableOpacity, View, Image, ScrollView } from "react-native";
 import { styles } from "./styles";
 
@@ -7,6 +7,7 @@ import Vodka from "../../assets/images/vodka.png";
 import Vodkalimao from "../../assets/images/vodka2.png";
 import Coca2 from "../../assets/images/coca2.png";
 import Cordeirinho from "../../assets/images/Cordeirinho.png"
+import { buscaListaProdutos } from "../../services/api";
 
 
 
@@ -16,10 +17,11 @@ interface ProdutosImagens {
     image: Document
 }
 interface Produtos {
-    id: string,
-    image: Document,
-    preco: string,
-    nome: string
+    id: number,
+    nome: string,
+    descricao: string,
+    preco: number,
+    url: string
 }
 
 
@@ -37,59 +39,21 @@ export const Home = () => {
         },
     ]);
 
-    const [produtos, setProdutos] = useState<Produtos[]>([
-        {
-            id: "1",
-            image: Coca,
-            preco: "R$ 3,00",
-            nome: "Coca-Cola"
+    const [produtos, setProdutos] = useState([]);
 
-        },
-        {
-            id: "2",
-            image: Vodka,
-            preco: "R$ 130,00",
-            nome: "Absolut Vodka"
+    
 
-        },
-        {
-            id: "2",
-            image: Vodka,
-            preco: "R$ 130,00",
-            nome: "Absolut Vodka"
-
-        },
-        {
-            id: "2",
-            image: Vodka,
-            preco: "R$ 130,00",
-            nome: "Absolut Vodka"
-
-        },
-        {
-            id: "2",
-            image: Vodka,
-            preco: "R$ 130,00",
-            nome: "Absolut Vodka"
-
-        },
-        {
-            id: "2",
-            image: Vodka,
-            preco: "R$ 130,00",
-            nome: "Absolut Vodka"
-
-        },
-        {
-            id: "2",
-            image: Vodka,
-            preco: "R$ 130,00",
-            nome: "Absolut Vodka"
-
-        },
-    ]);
-
-
+    useEffect(() => {
+        
+        buscaListaProdutos().then((res) => {
+            setProdutos(res.data);
+        }).catch((err) => {
+            console.log(err);
+        }).finally(() => {
+            console.log(produtos);
+        })
+    }, [])
+    
 
 
     return (
@@ -126,7 +90,7 @@ export const Home = () => {
                     data={produtos}
                     renderItem={({ item }) =>
                         <TouchableOpacity style={styles.buttonProdutos}>
-                            <Image source={item.image} style={styles.imgMenor} />
+                            <Image source={{uri: item.url}} style={styles.imgMenor} />
                             <View >
                                 <Text style={[{ fontWeight: "bold" }]}>
                                     {item.preco}

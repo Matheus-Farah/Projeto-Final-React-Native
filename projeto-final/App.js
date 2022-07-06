@@ -1,18 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Cadastro } from './src/screens/Cadastro';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import { Login } from './src/screens/Login';
-import { Carrinho } from './src/screens/Carrinho';
+import { Cadastro } from './src/screens/Cadastro';
+import { Routes } from './src/routes';
 
-import {Home} from './src/screens/Home'
 
-import { Perfil } from './src/screens/Perfil';
+const Stack = createStackNavigator();
 
+function MyRoutes() {
+  return <Routes/>
+}
+
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
+      <Stack.Screen name="Cadastro" component={Cadastro} options={{headerShown: false}} />
+      <Stack.Screen name="Home" component={MyRoutes} options={{headerShown: false}} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
+  
   return (
-    <Login/>
+    <NavigationContainer>
+      <MyStack/>
+    </NavigationContainer>
   );
 }
 

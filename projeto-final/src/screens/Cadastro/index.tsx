@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { Image, KeyboardAvoidingView, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { TextInputMask } from 'react-native-masked-text'
 import { LinearGradient } from 'expo-linear-gradient';
-
 import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
@@ -20,7 +19,7 @@ export interface UsuarioType {
 
 };
 
-export const Cadastro = () => {
+export const Cadastro = ({navigation}) => {
 
 
     const [cell, setCell] = useState('');
@@ -154,7 +153,7 @@ export const Cadastro = () => {
 
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => cadastrar()}
+                        onPress={ () => navigation.navigate("Login")}
                     >
                         <Text style={{ fontWeight: "bold" }}>Cadastrar</Text>
                     </TouchableOpacity>

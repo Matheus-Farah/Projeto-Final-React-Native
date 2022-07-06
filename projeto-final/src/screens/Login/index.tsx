@@ -15,7 +15,7 @@ export interface UserType {
     senha: string
 }
 
-export const Login = () => {
+export const Login = ({navigation}) => {
 
     const [offset] = useState(new Animated.ValueXY({ x: 0, y: 80 }))
     const [opacity] = useState(new Animated.Value(0));
@@ -47,6 +47,7 @@ export const Login = () => {
             })
 
         ]).start();
+    }, []);
 
 
         function keyboardDidShow(){
@@ -84,10 +85,10 @@ export const Login = () => {
         }
         
         function login() {
-            
+            navigation.navigate("Home")
             
             // Logar(usuario)
-            // .then(() => console.log("entrou"))
+            // .then(() => "DEU CERTO")
             // .catch(() => console.log("deu erro"));
             
         }
@@ -141,7 +142,9 @@ export const Login = () => {
                 </Animated.View>
                 <View>
                     <TouchableOpacity
-                        style={styles.button}>
+                        style={styles.button}
+                        onPress={ () => login()}
+                        >
                         <Text style={{ fontWeight: "bold" }}>Login</Text>
                     </TouchableOpacity>
                 </View>
@@ -152,7 +155,9 @@ export const Login = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.subtitle}>
-                    <TouchableOpacity>
+                    <TouchableOpacity 
+                    onPress={ () => navigation.navigate("Cadastro")}
+                    >
                         <Text style={[styles.subtitleText, { borderBottomWidth: 2 }]}>Cadastre-se aqui</Text>
                     </TouchableOpacity>
                 </View>
