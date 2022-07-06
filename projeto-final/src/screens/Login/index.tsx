@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, StyleSheet, Animated, Keyboard } from "react-native";
+import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, StyleSheet, Animated, Keyboard, } from "react-native";
 import {Logar} from "../../services/api"
 import { LinearGradient } from 'expo-linear-gradient';
-
-
-
+import {Icon} from 'react-native-vector-icons';
 
 import { styles } from "./styles";
 
@@ -24,11 +22,9 @@ export const Login = ({navigation}) => {
     const [usuario, setUsuario] = useState({
         email: "",
         senha: ""
-    });
-
-   
+    });  
         
-    
+
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
         const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
@@ -97,7 +93,6 @@ export const Login = ({navigation}) => {
 
     return (
 
-
         <LinearGradient style={styles.background} colors={['#37A8D9', '#E1F0F6']}>
 
             <View style={styles.headerText}>
@@ -113,9 +108,7 @@ export const Login = ({navigation}) => {
                             width: logo.x,
                             height: logo.y,
                         }]}
-
                         source={Cordeirinho}
-
                     />
 
                 </View>
@@ -138,10 +131,10 @@ export const Login = ({navigation}) => {
                     <TextInput
                         style={styles.input}
                         placeholder="Senha"
+                        secureTextEntry={true}                    
                         textContentType={"password"}
-                        keyboardType={"visible-password"}
-                        onChangeText={(e) => setUsuario({ ...usuario, senha: e })}
-                    />
+                        onChangeText={(e) => setUsuario({ ...usuario, senha: e })}                  
+                    />                    
                 </Animated.View>
                 <View>
                     <TouchableOpacity

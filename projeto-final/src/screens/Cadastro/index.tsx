@@ -3,6 +3,7 @@ import { Image, KeyboardAvoidingView, ScrollView, Text, TextInput, TouchableOpac
 import { TextInputMask } from 'react-native-masked-text'
 import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from "./styles";
+import { Form } from 'react-native-autofocus';
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
 import { Cadastrar } from "../../services/api";
@@ -17,15 +18,16 @@ export interface UsuarioType {
         senha: string,
         username: string
     }
-
 };
 
-export const Cadastro = ({navigation}) => {
+export const Cadastro = ({ navigation }) => {
 
 
     const [cell, setCell] = useState('');
     const [cpf, setCpf] = useState('');
     const [data, setData] = useState('');
+
+    const cpf_2 = useRef();
 
     const [dados, setDados] = useState<UsuarioType>({
         nome: "",
@@ -46,14 +48,13 @@ export const Cadastro = ({navigation}) => {
     })
 
     function cadastrarCli() {
-
-        setDados({ ...dados, usuario : { username: usuarioTransfer.username, email : usuarioTransfer.email, senha: usuarioTransfer.senha} })
+        setDados({ ...dados, usuario: { username: usuarioTransfer.username, email: usuarioTransfer.email, senha: usuarioTransfer.senha } })
         console.log(dados);
         Cadastrar(dados)
             .then(() => navigation.navigate("Home"))
             .catch(() => console.log("deu erro"));
     }
-    
+
 
     useEffect(() => {
         setDados({ ...dados, usuario: { username: usuarioTransfer.username, email: usuarioTransfer.email, senha: usuarioTransfer.senha } })
@@ -63,7 +64,9 @@ export const Cadastro = ({navigation}) => {
 
     return (
         <LinearGradient style={styles.gradient} colors={['#37A8D9', '#E1F0F6']}>
+
             <KeyboardAvoidingView style={styles.container}>
+                
                 <View style={styles.header}>
                     <Image
                         source={Cordeirinho}
@@ -78,6 +81,7 @@ export const Cadastro = ({navigation}) => {
                         </Text>
                     </View>
                 </View>
+                
                 <ScrollView>
                     <Text style={styles.inputTitle}>Nome:</Text>
                     <TextInput
@@ -88,21 +92,21 @@ export const Cadastro = ({navigation}) => {
                         onChangeText={(e) => setDados({ ...dados, nome: e })}
                         returnKeyType="next"
                         // REALIZAR SUBMITEDITING PARA O SECOND INPUT
-                        // onSubmitEditing={() => {secondTextInputMask.focus(); }}
+                        // onSubmitEditing={() => {cpf_2.current.focus(); }}
                         blurOnSubmit={false}
                     />
 
                     <Text style={styles.inputTitle}>CPF:</Text>
                     <TextInputMask style={styles.input}
                         // REALIZAR SUBMITEDITING PARA O SECOND INPUT
-                        // ref={(input) => {secondTextInputMask = input; }}    
-                        type={'cpf'}
-                        value={cpf}
-                        placeholder={"___.___.___-__"}
-                        onChangeText={(e) => setDados({ ...dados, cpf: e.replace(/\D+/g, '') })}
+                        // ref={(input_2) => {secondTextInputMask = input; }}
+                        // ref ={cpf_2}    
+                        type ={'cpf'}
+                        value ={cpf}
+                        placeholder ={"___.___.___-__"}
+                        onChangeText ={(e) => setDados({ ...dados, cpf: e.replace(/\D+/g, '') })}
                     />
-                    {/* REALIZAR TRATAMENTO NO PLACEHOLDER */}
-
+                    
                     <Text style={styles.inputTitle}>Telefone:</Text>
                     <TextInputMask style={styles.input}
                         type={'cel-phone'}
@@ -117,7 +121,6 @@ export const Cadastro = ({navigation}) => {
                     />
 
                     <Text style={styles.inputTitle}>Data de Nascimento:</Text>
-
                     <TextInputMask style={styles.input}
                         type={'datetime'}
                         options={{
@@ -136,7 +139,7 @@ export const Cadastro = ({navigation}) => {
                         placeholder={"SeuEmail@email.com"}
                         onChangeText={(e) => setUsuario({ ...usuarioTransfer, email: e })}
                     />
-                    {/* REALIZAR TRATAMENTO DE SENHA NO INPUT */}
+
                     <Text style={styles.inputTitle}>Senha:</Text>
                     <TextInput
                         style={styles.input}
@@ -157,11 +160,10 @@ export const Cadastro = ({navigation}) => {
 
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={ () => cadastrarCli()}
+                        onPress={() => cadastrarCli()}
                     >
                         <Text style={{ fontWeight: "bold" }}>Cadastrar</Text>
                     </TouchableOpacity>
-
                 </ScrollView>
             </KeyboardAvoidingView>
         </LinearGradient>

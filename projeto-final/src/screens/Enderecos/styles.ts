@@ -1,11 +1,9 @@
 import { BackHandler, Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-
     gradient: {
         flex: 1,
     },
-
     container: {
         flex: 1,
         paddingHorizontal: 30,
@@ -13,7 +11,6 @@ export const styles = StyleSheet.create({
         alignItems:"center",
         
     },
-
     image: {
         width: 90, 
         height: 90,
@@ -22,7 +19,6 @@ export const styles = StyleSheet.create({
         borderColor: 'black',
         marginTop: 60,
     },
-
     input: {
         marginHorizontal: 15,
         borderWidth: 2,
@@ -35,12 +31,10 @@ export const styles = StyleSheet.create({
         width: 290,
         backgroundColor:'#fff'
     },
-
     inputTitle: {
         fontSize: 20,
         paddingLeft: 18
     },
-
     button: {
         borderWidth: 2 ,
         alignItems:"center",
@@ -52,14 +46,12 @@ export const styles = StyleSheet.create({
         width: 264,
         backgroundColor: '#455EF1'
     },
-
     subtitle: {
         display: "flex",
         alignItems: "center",
         flexDirection: 'row',
         marginTop:20,
     },
-
     header: {
         display: "flex",
         alignItems: "center",
@@ -69,22 +61,18 @@ export const styles = StyleSheet.create({
         height: 120,
         backfaceVisibility:'visible',     
     },
-
     headerText: {
         display: "flex",
         flexDirection: 'column',
         marginTop:50,
     },
-
     subtitleText: {
         fontSize:18,
         fontWeight:"bold",
     },
-
     titleText: {
         
         fontSize: 32,
         paddingHorizontal: 20
     },
-    
 })
