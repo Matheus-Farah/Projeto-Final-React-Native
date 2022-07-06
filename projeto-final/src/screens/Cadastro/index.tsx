@@ -99,7 +99,7 @@ export const Cadastro = ({navigation}) => {
                         type={'cpf'}
                         value={cpf}
                         placeholder={"___.___.___-__"}
-                        onChangeText={(e) => setDados({ ...dados, cpf: e })}
+                        onChangeText={(e) => setDados({ ...dados, cpf: e.replace(/\D+/g, '') })}
                     />
                     {/* REALIZAR TRATAMENTO NO PLACEHOLDER */}
 
@@ -113,30 +113,19 @@ export const Cadastro = ({navigation}) => {
                         }}
                         value={cell}
                         placeholder={"(__)_____-____"}
-                        onChangeText={(e) => setDados({ ...dados, telefone: e })}
+                        onChangeText={(e) => setDados({ ...dados, telefone: e.replace(/\D+/g, '') })}
                     />
 
                     <Text style={styles.inputTitle}>Data de Nascimento:</Text>
 
-                    {/* <TextInputMask style={styles.input}
+                    <TextInputMask style={styles.input}
                         type={'datetime'}
                         options={{
-                            maskType: "BRL"
+                            format: 'yyyy-MM-dd',
                         }}
                         value={data}
                         onChangeText={(e) => setDados({ ...dados, dataNascimento: e })}
-                        placeholder={"dd/mm/yyyy"}
-                    /> */}
-                    <TextInput
-                        style={styles.input}
-                        textContentType={"name"}
-                        keyboardType={"numeric"}
-                        placeholder={"Digite seu nome:"}
-                        onChangeText={(e) => setDados({ ...dados, dataNascimento: e })}
-                        returnKeyType="next"
-                        // REALIZAR SUBMITEDITING PARA O SECOND INPUT
-                        // onSubmitEditing={() => {secondTextInputMask.focus(); }}
-                        blurOnSubmit={false}
+                        placeholder={"yyyy-mm-dd"}
                     />
 
                     <Text style={styles.inputTitle}>Email:</Text>

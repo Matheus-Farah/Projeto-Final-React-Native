@@ -10,13 +10,15 @@ import HomeIcon from "../assets/icons/HomeIcon.png";
 import PedidoIcon from "../assets/icons/PedidoIcon.png";
 import PerfilIcon from "../assets/icons/PerfilIcon.png";
 import SearchIcon from "../assets/icons/SearchIcon.png";
+import { Search } from '../screens/Search';
 
 
 
 const Tab = createBottomTabNavigator<ListaParametrosRotasTab>();
 
-export type ListaParametrosRotasTab ={
+export type ListaParametrosRotasTab = {
     Homes: undefined;
+    Search: undefined;
     Carrinho: undefined;
     Perfil: undefined;
 
@@ -31,7 +33,7 @@ export const Routes = () => {
             <Tab.Navigator
                 screenOptions={{
                     headerShown: false,
-                    tabBarStyle: {backgroundColor: "white", paddingBottom: 2},
+                    tabBarStyle: { backgroundColor: "white", paddingBottom: 2 },
                     tabBarActiveTintColor: 'black',
                     tabBarInactiveTintColor: 'grey',
                     tabBarShowLabel: false
@@ -41,43 +43,58 @@ export const Routes = () => {
                     name="Homes"
                     component={Home}
                     options={{
-                        tabBarIcon: ({color}) => {
+                        tabBarIcon: ({ color }) => {
                             return <Image
                                 resizeMode='contain'
-                                style={{width:30, tintColor: color}}
+                                style={{ width: 30, tintColor: color }}
                                 source={HomeIcon}
                             />
                         }
                     }}
-                    />
-                
+                />
+
+                <Tab.Screen
+                    name="Search"
+                    component={Search}
+                    options={{
+                        tabBarIcon: ({ color }) => {
+                            return <Image
+                                resizeMode='contain'
+                                style={{ width: 30, tintColor: color }}
+                                source={SearchIcon}
+                            />
+                        }
+                    }}
+                />
+
+
                 <Tab.Screen
                     name="Carrinho"
                     component={Carrinho}
                     options={{
-                        tabBarIcon: ({color}) => {
+                        tabBarIcon: ({ color }) => {
                             return <Image
                                 resizeMode='contain'
-                                style={{width:30, tintColor: color}}
+                                style={{ width: 30, tintColor: color }}
                                 source={PedidoIcon}
                             />
                         }
                     }}
-                    />
+                />
                 <Tab.Screen
                     name="Perfil"
                     component={Perfil}
                     options={{
-                        tabBarIcon: ({color}) => {
+                        tabBarIcon: ({ color }) => {
                             return <Image
                                 resizeMode='contain'
-                                style={{width:30, tintColor: color}}
+                                style={{ width: 30, tintColor: color }}
                                 source={PerfilIcon}
                             />
                         }
                     }}
-                    />
-                
+                />
+
             </Tab.Navigator>
         </>
     );

@@ -1,15 +1,19 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+
+    gradient: {
+        flex: 1,
+    },
     container: {
         flex: 1,
-        backgroundColor: '#F0F6F9',
         paddingTop: 60,
         paddingBottom:30
     },
     header: {
         flexDirection:"row",
-        justifyContent:"space-between"
+        justifyContent:"space-between",
+
 
     },
 
@@ -27,7 +31,7 @@ export const styles = StyleSheet.create({
 
     },
     textProduto: {
-        fontSize: 18,
+        fontSize: 25,
         fontWeight: "bold",
         alignSelf: "baseline",
         paddingLeft: 10

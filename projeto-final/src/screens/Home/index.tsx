@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, KeyboardAvoidingView, Text, TouchableOpacity, View, Image, ScrollView } from "react-native";
 import { styles } from "./styles";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import Coca from "../../assets/images/coca.png";
 import Vodka from "../../assets/images/vodka.png";
@@ -41,76 +42,77 @@ export const Home = () => {
 
     const [produtos, setProdutos] = useState([]);
 
-    
+
 
     useEffect(() => {
-        
+
         buscaListaProdutos().then((res) => {
             setProdutos(res.data);
         }).catch((err) => {
             console.log(err);
         }).finally(() => {
-            
+
         })
     }, [])
-    
+
 
 
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
+        <LinearGradient style={styles.gradient} colors={['#37A8D9', '#E1F0F6']}>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <View >
+                        <Text style={styles.textProduto}>
+                            Promoções
+                        </Text>
+                    </View>
+                    <View>
+                        <Image source={Cordeirinho} style={styles.cordeirinho} />
+                    </View>
+                </View>
+
                 <View >
-                    <Text style={styles.textProduto}>
-                        Promoções
-                    </Text>
-                </View>
-                <View>
-                    <Image source={Cordeirinho} style={styles.cordeirinho} />
-                </View>
-            </View>
-
-            <View >
-                <FlatList
-                    showsHorizontalScrollIndicator={false}
-                    horizontal={true}
-                    data={produtoImg}
-                    renderItem={({ item }) =>
-                        <View style={styles.viewImg}>
-                            {/* <Image source={item.image} style={styles.img} /> */}
-                        </View>
-                    }
-                    keyExtractor={item => item.id}
-                />
-            </View>
-
-            <View style={styles.viewProdutos}>
-                <FlatList
-                
-                    numColumns={2}
-                    data={produtos}
-                    renderItem={({ item }) =>
-                        <TouchableOpacity style={styles.buttonProdutos}>
-                            <Image source={{uri: item.url}} style={styles.imgMenor} />
-                            <View >
-                                <Text style={[{ fontWeight: "bold" }]}>
-                                    {item.preco}
-                                </Text>
-                                <Text >
-                                    {item.nome}
-                                </Text>
+                    <FlatList
+                        showsHorizontalScrollIndicator={false}
+                        horizontal={true}
+                        data={produtoImg}
+                        renderItem={({ item }) =>
+                            <View style={styles.viewImg}>
+                                {/* <Image source={item.image} style={styles.img} /> */}
                             </View>
+                        }
+                        keyExtractor={item => item.id}
+                    />
+                </View>
 
-                        </TouchableOpacity>
-                    }
+                <View style={styles.viewProdutos}>
+                    <FlatList
 
-                    keyExtractor={item => item.id}
-                />
+                        numColumns={2}
+                        data={produtos}
+                        renderItem={({ item }) =>
+                            <TouchableOpacity style={styles.buttonProdutos}>
+                                <Image source={{ uri: item.url }} style={styles.imgMenor} />
+                                <View >
+                                    <Text style={[{ fontWeight: "bold" }]}>
+                                        {item.preco}
+                                    </Text>
+                                    <Text >
+                                        {item.nome}
+                                    </Text>
+                                </View>
+
+                            </TouchableOpacity>
+                        }
+
+                        keyExtractor={item => item.id}
+                    />
 
 
 
+                </View>
             </View>
-        </View>
-
+        </LinearGradient>
 
     )
 }
