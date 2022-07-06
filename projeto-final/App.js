@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Login } from './src/screens/Login';
 import { Cadastro } from './src/screens/Cadastro';
 import { Routes } from './src/routes';
+import { Search } from './src/screens/Search';
 
 
 const Stack = createStackNavigator();
@@ -28,7 +29,7 @@ export default function App() {
   
   return (
     <NavigationContainer>
-      <MyStack/>
+      <Routes/>
     </NavigationContainer>
   );
 }
