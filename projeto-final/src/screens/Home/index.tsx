@@ -31,18 +31,15 @@ export const Home = () => {
         {
             id: "1",
             image: Coca2
-
         },
+
         {
             id: "2",
             image: Vodkalimao
-
         },
     ]);
 
     const [produtos, setProdutos] = useState([]);
-
-
 
     useEffect(() => {
 
@@ -58,8 +55,11 @@ export const Home = () => {
 
 
     return (
+
         <LinearGradient style={styles.gradient} colors={['#37A8D9', '#E1F0F6']}>
+            
             <View style={styles.container}>
+
                 <View style={styles.header}>
                     <View >
                         <Text style={styles.textProduto}>
@@ -86,8 +86,8 @@ export const Home = () => {
                 </View>
 
                 <View style={styles.viewProdutos}>
-                    <FlatList
 
+                    <FlatList
                         numColumns={2}
                         data={produtos}
                         renderItem={({ item }) =>
@@ -101,18 +101,12 @@ export const Home = () => {
                                         {item.nome}
                                     </Text>
                                 </View>
-
                             </TouchableOpacity>
                         }
-
                         keyExtractor={item => item.id}
                     />
-
-
-
                 </View>
             </View>
         </LinearGradient>
-
     )
 }

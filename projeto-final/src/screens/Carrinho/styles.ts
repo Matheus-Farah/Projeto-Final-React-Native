@@ -1,23 +1,25 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    gradient: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         marginTop: 60,
-        backgroundColor: '#FFFFFF'
     },
     header: {
+        flexDirection: "row",
         backgroundColor: '#898AA6',
         borderColor: "#000000",  
-        borderWidth: 1.5,
-        paddingVertical: 20
+        borderWidth: 1.5,      
+        
     },
     text: {
-        width: '100%',
-        fontStyle: 'normal',
-        fontWeight: '700',
-        fontSize: 32,
-        paddingLeft: 5
+        width: '83%',
+        fontWeight: 'bold',
+        fontSize: 25,
+        paddingLeft: 10,
     },
     total: {
         backgroundColor: '#898989',
@@ -26,7 +28,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1.2,
 
         marginHorizontal: 10,
-        marginTop: 250
+        marginTop: 10,
     },
     totalText: {
         color: '#000',
@@ -38,7 +40,8 @@ export const styles = StyleSheet.create({
         alignItems:"center",
         paddingTop: 9,
         borderRadius: 10,
-        marginTop: 15,
+        marginTop: 5,
+        marginBottom: 5,
         marginHorizontal: 100,
         height: 46,
         width: "50%",
@@ -48,4 +51,14 @@ export const styles = StyleSheet.create({
         fontSize:18,
         fontWeight:"bold",
     },
+
+    cordeirinho:{
+        alignSelf:"auto",
+        width:50,
+        height:50,
+        borderRadius:30,
+        marginRight:20,
+
+    },
+
 });

@@ -17,8 +17,10 @@ export const Perfil = () => {
 
 
     return (
+
         <LinearGradient style={styles.gradient} colors={['#37A8D9', '#E1F0F6']}>
             <ScrollView>
+                
                 <View style={styles.container}>
 
                     <View >

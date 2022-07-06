@@ -6,21 +6,19 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
     },
+
     containerLogo: {
         flex: 1,
-        justifyContent: "center",
-        // backgroundColor: '#1616',
-        
+        justifyContent: "center",        
     },
+
     container:{
         marginVertical: 20,
         alignItems: "center",
         justifyContent: "center",
         width: "90%",
-        // paddingBottom: -10
-        
-
     },
+
     image: {
         borderRadius: 10,
         borderWidth:2,
@@ -28,6 +26,7 @@ export const styles = StyleSheet.create({
         marginTop: 40,
         shadowOpacity: 1,
     },
+
     input: {
         marginHorizontal: 15,
         borderWidth: 2,
@@ -41,11 +40,13 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
         backgroundColor:'#fff',
     },
+
     inputTitle: {
         fontSize: 20,
         paddingLeft: 18,
         justifyContent:'flex-start',
     },
+
     button: {
         borderWidth: 2 ,
         alignItems:"center",
@@ -56,24 +57,26 @@ export const styles = StyleSheet.create({
         width: 264,
         backgroundColor: '#455EF1'
     },
+
     subtitle: {
         display: "flex",
         alignItems: "center",
         flexDirection: 'row',
-        // marginTop:5,
         paddingBottom:5,
     },
+
     subtitleText: {
         fontSize:18,
         fontWeight:"bold",
     },
+
     headerText: {
         display: "flex",
         flexDirection: 'column',
         marginTop:30,
     },
-    titleText: {
-        
+
+    titleText: {        
         fontSize: 32,
         paddingHorizontal: 20
     },
