@@ -8,6 +8,7 @@ import { Cadastro } from './src/screens/Cadastro';
 import { Enderecos } from './src/screens/Enderecos';
 import { Routes } from './src/routes';
 import { Search } from './src/screens/Search';
+import { Produto } from './src/screens/Produto';
 
 
 
@@ -32,7 +33,7 @@ export default function App() {
   
   return (
     <NavigationContainer>
-      <MyStack/>
+      <Produto/>
     </NavigationContainer>
   );
 }
