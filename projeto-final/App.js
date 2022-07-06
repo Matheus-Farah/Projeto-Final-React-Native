@@ -3,10 +3,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Cadastro } from './src/screens/Cadastro';
 import { Login } from './src/screens/Login';
+import { Carrinho } from './src/screens/Carrinho';
 
 export default function App() {
   return (
-    <Cadastro/>
+    <Carrinho/>
   );
 }
 
