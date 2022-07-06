@@ -39,12 +39,10 @@ export const Cadastro = () => {
 
     function cadastrar() {
         setDados({ ...dados, usuario : { username: usuarioTransfer.username, email : usuarioTransfer.email, senha: usuarioTransfer.senha} })
-        mostrar();
-    }
-    function mostrar() {
         console.log(dados);
-        setDados({ ...dados, usuario : { username: usuarioTransfer.username, email : usuarioTransfer.email, senha: usuarioTransfer.senha} })
+        
     }
+    
 
     useEffect(() => {
         setDados({ ...dados, usuario : { username: usuarioTransfer.username, email : usuarioTransfer.email, senha: usuarioTransfer.senha} })  

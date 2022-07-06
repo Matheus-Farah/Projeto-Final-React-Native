@@ -1,25 +1,41 @@
 import axios from "axios";
 import { UsuarioType } from "../screens/Cadastro";
+import jwt_decode from "jwt-decode";
+import { UserType } from "../screens/Login";
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: 'https://swapi.dev/api/',
 });
 
-export function buscaProdutos () {
-    const url = `produto`;
+export function buscaNaves () {
+    const url = `starships`;
 
     return api.get(url);
 }
 
-export function buscaProdutoEspecifico (index: string) {
-    const url = `magic-items/${index}`;
+export function buscaNaveEspecifica (index: string) {
+    const url = `starships/${index}/`;
 
     return api.get(url);
 }
 
-export function Cadastro (usuario: UsuarioType) {
+
+
+export async function Cadastro (usuario: UsuarioType) {
     const url = `cliente`;
+    const response = await api.post(`cliente`, usuario);
+    const decoded = jwt_decode(response.headers.authorization);
+    //handleSetToken(response.headers.authorization);
+    return response;
+}
 
-    return api.post(url, usuario);
+export async function Logar (usuario: UserType) {
+    
+    const response = await api.post(`login`, usuario);
+    const decoded = jwt_decode(response.headers.authorization);
+    console.log(decoded);
+    
+    //handleSetToken(response.headers.authorization);
+    return response;
 }
 

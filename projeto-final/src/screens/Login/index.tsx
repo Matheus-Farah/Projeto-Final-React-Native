@@ -1,15 +1,28 @@
 import React, {useState, useEffect} from "react";
 import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, StyleSheet, Animated, Keyboard } from "react-native";
+import {Logar} from "../../services/api"
 
 import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
+
+export interface UserType {
+    email: string,
+    senha: string
+}
 
 export const Login = () => {
 
     const [offset] = useState(new Animated.ValueXY({x: 0, y: 80}))
     const [opacity] = useState(new Animated.Value(0));
     const [logo] = useState(new Animated.ValueXY({x: 170, y: 195}))
+    const [usuario, setUsuario] = useState({
+        email: "",
+        senha: ""
+    });
+
+   
+        
     
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
@@ -66,6 +79,15 @@ export const Login = () => {
             ]).start();
         }
         
+        function login() {
+            
+            
+            // Logar(usuario)
+            // .then(() => console.log("entrou"))
+            // .catch(() => console.log("deu erro"));
+            
+        }
+
     return (
 
         <KeyboardAvoidingView style={styles.background}>
@@ -95,17 +117,21 @@ export const Login = () => {
                     placeholder ="Email"
                     textContentType={"emailAddress"}
                     keyboardType={"email-address"}
+                    onChangeText={(e) => setUsuario({ ...usuario, email: e })}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder ="Senha"
                     textContentType={"password"}
                     keyboardType={"visible-password"}
+                    onChangeText={(e) => setUsuario({ ...usuario, senha: e })}
                 />
             </Animated.View>
             <View>
                 <TouchableOpacity 
-                style={styles.button}>
+                style={styles.button}
+                onPress={() => login()}
+                >
                     <Text style={{fontWeight: "bold"}}>Login</Text>
                 </TouchableOpacity>
             </View>
