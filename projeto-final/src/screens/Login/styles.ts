@@ -1,19 +1,30 @@
 import { Platform, StyleSheet } from "react-native"
 
 export const styles = StyleSheet.create({
-    container: {
+    background:{
         flex: 1,
-        paddingHorizontal: 30,
-        paddingBottom: 60,
-        alignItems:"center",
+        alignItems: "center",
+        backgroundColor: '#F0F6F9',
+    },
+    containerLogo: {
+        flex: 1,
+        justifyContent: "center",
+        // backgroundColor: '#1616',
+    },
+    container:{
+        marginVertical: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        width: "90%",
+        // paddingBottom: -10
+        
+
     },
     image: {
-        width: 200, 
-        height: 200,
-        borderRadius: 40,
+        borderRadius: 10,
         borderWidth:2,
         borderColor: 'black',
-        marginTop: 60,
+        marginTop: 40,
     },
     input: {
         marginHorizontal: 15,
@@ -24,18 +35,21 @@ export const styles = StyleSheet.create({
         padding: Platform.OS === 'ios' ? 15 : 10,
         borderRadius: 10,
         height: 50,
-        width: 290,
+        width: '90%',
+        marginBottom: 10,
+        backgroundColor:'#fff',
     },
     inputTitle: {
         fontSize: 20,
-        paddingLeft: 18
+        paddingLeft: 18,
+        justifyContent:'flex-start',
     },
     button: {
         borderWidth: 2 ,
         alignItems:"center",
         paddingTop:10,
         borderRadius: 10,
-        marginTop: 20,
+        // marginTop: 1,
         height: 46,
         width: 264,
         backgroundColor: '#455EF1'
@@ -44,7 +58,8 @@ export const styles = StyleSheet.create({
         display: "flex",
         alignItems: "center",
         flexDirection: 'row',
-        marginTop:20,
+        // marginTop:5,
+        paddingBottom:5,
     },
     subtitleText: {
         fontSize:18,

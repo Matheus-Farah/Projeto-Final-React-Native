@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 30,
         paddingBottom: 60,
         alignItems:"center",
+        
     },
     image: {
         width: 90, 
@@ -33,6 +34,7 @@ export const styles = StyleSheet.create({
     button: {
         borderWidth: 2 ,
         alignItems:"center",
+        alignSelf:"center",
         paddingTop:10,
         borderRadius: 10,
         marginTop: 20,
@@ -51,7 +53,9 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: 'row',
         marginTop:20,
-        marginBottom:20
+        marginBottom:20,
+        height: 120,
+        backfaceVisibility:'visible',     
     },
     headerText: {
         display: "flex",
