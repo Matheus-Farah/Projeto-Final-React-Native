@@ -31,13 +31,13 @@ export const CardItem = ({ produto, ...rest }: ItemProps) => {
           <View style={styles.card}>
             
             <TouchableOpacity>
-              <Text style={[styles.buttons, {marginLeft: 5}]}> - </Text>
+              <Text style={[styles.buttons, {backgroundColor: 'red'}]}> - </Text>
             </TouchableOpacity>
             
             <Text style={styles.quantidade}>{produto.quantidade}</Text>
             
             <TouchableOpacity>
-              <Text style={[styles.buttons, {marginLeft: 5}]}> + </Text>
+              <Text style={[styles.buttons, {backgroundColor: 'green'}]}> + </Text>
             </TouchableOpacity>
           </View>
 

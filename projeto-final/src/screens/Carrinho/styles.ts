@@ -26,11 +26,26 @@ export const styles = StyleSheet.create({
         borderWidth: 1.2,
 
         marginHorizontal: 10,
-        marginTop: 320
+        marginTop: 250
     },
     totalText: {
         color: '#000',
         fontSize: 25,
         fontWeight: 'bold',
-    }
+    },
+    button: {
+        borderWidth: 2 ,
+        alignItems:"center",
+        paddingTop: 9,
+        borderRadius: 10,
+        marginTop: 15,
+        marginHorizontal: 100,
+        height: 46,
+        width: "50%",
+        backgroundColor: '#455EF1'
+    },
+    subtitleText: {
+        fontSize:18,
+        fontWeight:"bold",
+    },
 });

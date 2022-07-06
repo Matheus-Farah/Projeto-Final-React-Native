@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { CardItem } from "../../components/CardItem";
 import { styles } from "./styles";
 
@@ -50,6 +50,10 @@ export const Carrinho = () => {
       <View style={styles.total}>
         <Text style={styles.totalText}>Total: R$</Text>
       </View>
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.subtitleText}>Finalizar Pedido</Text>
+      </TouchableOpacity>
     </View>
   );
 };

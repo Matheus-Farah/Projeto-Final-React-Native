@@ -57,7 +57,7 @@ export const styles = StyleSheet.create({
         width: '80%',
         textAlign: "center",
 
-        backgroundColor: '#fff',
+        marginLeft: 5,
         borderRadius: 10
     },
 })
