@@ -9,6 +9,7 @@ import { Enderecos } from './src/screens/Enderecos';
 import { Routes } from './src/routes';
 import { ProvedorCarrinho } from './src/context/CarrinhoContext';
 import { Search } from './src/screens/Search';
+import { Produto } from './src/screens/Produto';
 
 
 
@@ -35,7 +36,7 @@ export default function App() {
   return (
     <ProvedorCarrinho>
     <NavigationContainer>
-      <MyStack/>
+      <Produto/>
     </NavigationContainer>
     </ProvedorCarrinho>
   );

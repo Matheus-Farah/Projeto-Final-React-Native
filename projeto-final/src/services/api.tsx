@@ -14,7 +14,7 @@ export function buscaListaProdutos () {
     return api.get(url);
 }
 
-export function buscaNaveEspecifica (index: string) {
+export function buscaProdutoEspecifico (index: string) {
     const url = `produto/${index}/`;
 
     return api.get(url);
