@@ -1,11 +1,15 @@
-import { Platform, StyleSheet } from "react-native";
+import { BackHandler, Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    gradient: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         paddingHorizontal: 30,
         paddingBottom: 60,
         alignItems:"center",
+        
     },
     image: {
         width: 90, 
@@ -25,6 +29,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         height: 50,
         width: 290,
+        backgroundColor:'#fff'
     },
     inputTitle: {
         fontSize: 20,
@@ -33,6 +38,7 @@ export const styles = StyleSheet.create({
     button: {
         borderWidth: 2 ,
         alignItems:"center",
+        alignSelf:"center",
         paddingTop:10,
         borderRadius: 10,
         marginTop: 20,
@@ -51,7 +57,9 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: 'row',
         marginTop:20,
-        marginBottom:20
+        marginBottom:20,
+        height: 120,
+        backfaceVisibility:'visible',     
     },
     headerText: {
         display: "flex",
