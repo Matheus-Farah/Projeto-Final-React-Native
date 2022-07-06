@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FlatList, KeyboardAvoidingView, Text, TouchableOpacity, View, Image, ScrollView } from "react-native";
 import { styles } from "./styles";
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,6 +9,7 @@ import Vodkalimao from "../../assets/images/vodka2.png";
 import Coca2 from "../../assets/images/coca2.png";
 import Cordeirinho from "../../assets/images/Cordeirinho.png"
 import { buscaListaProdutos } from "../../services/api";
+import { ContextoCarrinho } from "../../context/CarrinhoContext";
 
 
 
@@ -17,7 +18,7 @@ interface ProdutosImagens {
     id: string,
     image: Document
 }
-interface Produtos {
+export interface Produtos {
     id: number,
     nome: string,
     descricao: string,
@@ -40,6 +41,26 @@ export const Home = () => {
     ]);
 
     const [produtos, setProdutos] = useState([]);
+    const [produtoSelect, setProdutoSelect] = useState<Produtos>({
+        id: 0,
+        nome: "",
+        descricao: "",
+        preco: 0,
+        url: ""
+    });
+
+    const setListaDeProdutos = useContext(ContextoCarrinho).adicionaItensCarrinho;
+    const listaDeProdutosCarrinho = useContext(ContextoCarrinho).listaDeProdutos;
+    const retiraItemCarrinho = useContext(ContextoCarrinho).retiraItemCarrinho;
+    const total = useContext(ContextoCarrinho).precoTotal;
+
+    const listaDeProdutos: Produtos = {
+        id: 0,
+        nome: "",
+        descricao: "",
+        preco: 0,
+        url: ""
+    }
 
     useEffect(() => {
 
@@ -52,6 +73,19 @@ export const Home = () => {
         })
     }, [])
 
+
+    function lidaBotao (produto: Produtos){
+        // if (carrinho) {
+        //     retiraItemCarrinho(produto.id);
+        // } else {
+        //     setListaDeProdutos(produto);
+        // }
+        setListaDeProdutos(produto);
+        console.log(listaDeProdutosCarrinho);
+        console.log(total);
+        
+        
+    }
 
 
     return (
@@ -86,14 +120,16 @@ export const Home = () => {
                 </View>
 
                 <View style={styles.viewProdutos}>
-
                     <FlatList
                         numColumns={2}
                         data={produtos}
                         renderItem={({ item }) =>
-                            <TouchableOpacity style={styles.buttonProdutos}>
+                            <TouchableOpacity 
+                            style={styles.buttonProdutos}
+                            onPress={ () => lidaBotao(item)}
+                            >
                                 <Image source={{ uri: item.url }} style={styles.imgMenor} />
-                                <View >
+                                <View>
                                     <Text style={[{ fontWeight: "bold" }]}>
                                         {item.preco}
                                     </Text>

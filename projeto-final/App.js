@@ -7,7 +7,9 @@ import { Login } from './src/screens/Login';
 import { Cadastro } from './src/screens/Cadastro';
 import { Enderecos } from './src/screens/Enderecos';
 import { Routes } from './src/routes';
+import { ProvedorCarrinho } from './src/context/CarrinhoContext';
 import { Search } from './src/screens/Search';
+
 
 
 
@@ -31,9 +33,11 @@ function MyStack() {
 export default function App() {
   
   return (
+    <ProvedorCarrinho>
     <NavigationContainer>
       <MyStack/>
     </NavigationContainer>
+    </ProvedorCarrinho>
   );
 }
 
