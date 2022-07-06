@@ -1,6 +1,9 @@
-import { Platform, StyleSheet } from "react-native";
+import { BackHandler, Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    gradient: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         paddingHorizontal: 30,
@@ -26,6 +29,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         height: 50,
         width: 290,
+        backgroundColor:'#fff'
     },
     inputTitle: {
         fontSize: 20,
