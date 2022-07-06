@@ -5,8 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Login } from './src/screens/Login';
 import { Cadastro } from './src/screens/Cadastro';
+import { Enderecos } from './src/screens/Endereços';
 import { Routes } from './src/routes';
 import { Search } from './src/screens/Search';
+
 
 
 const Stack = createStackNavigator();
@@ -20,6 +22,7 @@ function MyStack() {
     <Stack.Navigator>
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
       <Stack.Screen name="Cadastro" component={Cadastro} options={{headerShown: false}} />
+      <Stack.Screen name="Enderecos" component={Enderecos} options={{headerShown: false}} />
       <Stack.Screen name="Home" component={MyRoutes} options={{headerShown: false}} />
     </Stack.Navigator>
   );

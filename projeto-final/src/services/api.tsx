@@ -2,6 +2,7 @@ import axios from "axios";
 import { UsuarioType } from "../screens/Cadastro";
 import jwt_decode from "jwt-decode";
 import { UserType } from "../screens/Login";
+import { EnderecoType } from "../screens/Endereços";
 
 const api = axios.create({
     baseURL: 'https://api-cdelivery.herokuapp.com',
@@ -25,6 +26,11 @@ export async function Cadastrar (usuario: UsuarioType) {
     const url = `/cliente`;
     const response = await api.post(`/cliente`, usuario);
     //handleSetToken(response.headers.authorization);
+    return response;
+}
+
+export async function CadastrarEndereco (endereco: EnderecoType) {
+    const response = await api.post(`/endereco`, endereco);
     return response;
 }
 
