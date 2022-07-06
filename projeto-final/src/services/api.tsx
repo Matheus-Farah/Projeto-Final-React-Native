@@ -21,17 +21,16 @@ export function buscaNaveEspecifica (index: string) {
 
 
 
-export async function Cadastro (usuario: UsuarioType) {
-    const url = `cliente`;
-    const response = await api.post(url, usuario);
-    const decoded = jwt_decode(response.headers.authorization);
+export async function Cadastrar (usuario: UsuarioType) {
+    const url = `/cliente`;
+    const response = await api.post(`/cliente`, usuario);
     //handleSetToken(response.headers.authorization);
     return response;
 }
 
 export async function Logar (usuario: UserType) {
     
-    const response = await api.post(`login`, usuario);
+    const response = await api.post(`/login`, usuario);
     const decoded = jwt_decode(response.headers.authorization);
     console.log(decoded);
     

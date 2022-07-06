@@ -50,7 +50,7 @@ export const Home = () => {
         }).catch((err) => {
             console.log(err);
         }).finally(() => {
-            console.log(produtos);
+            
         })
     }, [])
     
@@ -76,7 +76,7 @@ export const Home = () => {
                     data={produtoImg}
                     renderItem={({ item }) =>
                         <View style={styles.viewImg}>
-                            <Image source={item.image} style={styles.img} />
+                            {/* <Image source={item.image} style={styles.img} /> */}
                         </View>
                     }
                     keyExtractor={item => item.id}

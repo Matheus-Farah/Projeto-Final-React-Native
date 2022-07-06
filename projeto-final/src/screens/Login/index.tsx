@@ -85,11 +85,12 @@ export const Login = ({navigation}) => {
         }
         
         function login() {
-            navigation.navigate("Home")
             
-            // Logar(usuario)
-            // .then(() => "DEU CERTO")
-            // .catch(() => console.log("deu erro"));
+            console.log(usuario);
+            
+            Logar(usuario)
+            .then(() => navigation.navigate("Home"))
+            .catch(() => console.log("deu erro"));
             
         }
 
@@ -132,12 +133,14 @@ export const Login = ({navigation}) => {
                         placeholder="Email"
                         textContentType={"emailAddress"}
                         keyboardType={"email-address"}
+                        onChangeText={(e) => setUsuario({ ...usuario, email: e })}
                     />
                     <TextInput
                         style={styles.input}
                         placeholder="Senha"
                         textContentType={"password"}
                         keyboardType={"visible-password"}
+                        onChangeText={(e) => setUsuario({ ...usuario, senha: e })}
                     />
                 </Animated.View>
                 <View>

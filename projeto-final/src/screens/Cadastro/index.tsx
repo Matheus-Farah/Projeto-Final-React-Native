@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
+import { Cadastrar } from "../../services/api";
 
 export interface UsuarioType {
     nome: string,
@@ -44,10 +45,13 @@ export const Cadastro = ({navigation}) => {
         username: ""
     })
 
-    function cadastrar() {
+    function cadastrarCli() {
 
         setDados({ ...dados, usuario : { username: usuarioTransfer.username, email : usuarioTransfer.email, senha: usuarioTransfer.senha} })
         console.log(dados);
+        Cadastrar(dados)
+            .then(() => navigation.navigate("Home"))
+            .catch(() => console.log("deu erro"));
     }
     
 
@@ -114,7 +118,7 @@ export const Cadastro = ({navigation}) => {
 
                     <Text style={styles.inputTitle}>Data de Nascimento:</Text>
 
-                    <TextInputMask style={styles.input}
+                    {/* <TextInputMask style={styles.input}
                         type={'datetime'}
                         options={{
                             maskType: "BRL"
@@ -122,6 +126,17 @@ export const Cadastro = ({navigation}) => {
                         value={data}
                         onChangeText={(e) => setDados({ ...dados, dataNascimento: e })}
                         placeholder={"dd/mm/yyyy"}
+                    /> */}
+                    <TextInput
+                        style={styles.input}
+                        textContentType={"name"}
+                        keyboardType={"numeric"}
+                        placeholder={"Digite seu nome:"}
+                        onChangeText={(e) => setDados({ ...dados, dataNascimento: e })}
+                        returnKeyType="next"
+                        // REALIZAR SUBMITEDITING PARA O SECOND INPUT
+                        // onSubmitEditing={() => {secondTextInputMask.focus(); }}
+                        blurOnSubmit={false}
                     />
 
                     <Text style={styles.inputTitle}>Email:</Text>
@@ -153,7 +168,7 @@ export const Cadastro = ({navigation}) => {
 
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={ () => navigation.navigate("Login")}
+                        onPress={ () => cadastrarCli()}
                     >
                         <Text style={{ fontWeight: "bold" }}>Cadastrar</Text>
                     </TouchableOpacity>
