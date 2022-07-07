@@ -16,7 +16,8 @@ export const ContextoCarrinho = createContext<TipoContextoCarrinho>({
         nome: "",
         descricao: "",
         preco: 0,
-        url: ""
+        url: "",
+        quantidade: 0
     }],
     adicionaItensCarrinho: (produto: Produtos) => { },
     precoTotal: 0,
@@ -40,21 +41,59 @@ export const ProvedorCarrinho = ({ children }) => {
     function calculaPrecoTotal() {
         let somaTotal = 0
         listaDeProdutos.length !== 0 && listaDeProdutos.map((item) => {
-            somaTotal = somaTotal + Number(item.preco)
+            somaTotal += item.preco*item.quantidade
         });
         setPrecoTotal(somaTotal);
     };
 
+
+
     function retiraItemCarrinho(id: number) {
-        let novoCarrinho = listaDeProdutos.filter((produto) => {
-            return produto.id !== id
-        });
-        setProdutos(novoCarrinho);
+        if (listaDeProdutos.find(e => e.id === id)) {
+            listaDeProdutos.map((produto) => {
+                if (produto.id === id) {
+                    if (produto.quantidade === 1) {
+                        let novoCarrinho = listaDeProdutos.filter((produto) => {
+                                return produto.id !== id
+                            });
+                            setProdutos(novoCarrinho);
+                        }else {
+                            produto.quantidade -= 1;
+                        }
+                    }
+             })
+        }
+
+        
+
+
+
+
     };
 
     function adicionaItensCarrinho(item: Produtos) {
-        storeData([...listaDeProdutos, item])
-        setProdutos([...listaDeProdutos, item]);
+
+        let novoProduto = item;
+
+        if (listaDeProdutos.find(e => e.id === item.id)) {
+            listaDeProdutos.map((produto) => {
+                if (produto.id === item.id) {
+                    produto.quantidade += 1;
+                }
+            })
+        } else {
+            novoProduto.quantidade = 1;
+            storeData([...listaDeProdutos, novoProduto])
+            setProdutos([...listaDeProdutos, novoProduto]);
+
+
+
+            // setProdutos(listaDeProdutos);
+            // storeData(listaDeProdutos);
+        }
+
+
+
     }
 
     const storeData = async (value: Produtos[]) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FlatList, Text, TouchableOpacity, View, Image } from "react-native";
 import { CardItem } from "../../components/CardItem";
 import { styles } from "./styles";
@@ -8,53 +8,88 @@ import Guarana from "../../assets/images/guarana.png"
 import Cordeirinho from "../../assets/images/Cordeirinho.png"
 import { LinearGradient } from "expo-linear-gradient";
 import { ScrollView } from "react-native-gesture-handler";
+import { ContextoCarrinho } from "../../context/CarrinhoContext";
+import { Produtos } from "../Home";
+import { useFocusEffect } from "@react-navigation/native";
 
 export interface ItensCarrinhoProps {
   id: string,
-  name: string,
+  nome: string,
   quantidade: number,
   preco: number,
-  image: Document,
+  url: string,
 }
 
+
+
 export const Carrinho = () => {
-  const [carrinho, setCarrinho] = useState<ItensCarrinhoProps[]>([
-    {
-      id: "1",
-      name: "Coca-cola",
-      quantidade: 2,
-      preco: 3.5,
-      image: Coca
-    },
-    {
-      id: "2",
-      name: "Guarana",
-      quantidade: 2,
-      preco: 3.5,
-      image: Guarana
-    },
-    {
-      id: "3",
-      name: "Guarana",
-      quantidade: 2,
-      preco: 3.5,
-      image: Guarana
-    },
-    {
-      id: "4",
-      name: "Guarana",
-      quantidade: 2,
-      preco: 3.5,
-      image: Guarana
-    },
-    {
-      id: "5",
-      name: "Guarana",
-      quantidade: 2,
-      preco: 3.5,
-      image: Guarana
-    },
-  ]);
+  // const [carrinho, setCarrinho] = useState<Produtos[]>([
+  //   {
+  //     id: "1",
+  //     name: "Coca-cola",
+  //     quantidade: 2,
+  //     preco: 3.5,
+  //     image: Coca
+  //   },
+  //   {
+  //     id: "2",
+  //     name: "Guarana",
+  //     quantidade: 2,
+  //     preco: 3.5,
+  //     image: Guarana
+  //   },
+  //   {
+  //     id: "3",
+  //     name: "Guarana",
+  //     quantidade: 2,
+  //     preco: 3.5,
+  //     image: Guarana
+  //   },
+  //   {
+  //     id: "4",
+  //     name: "Guarana",
+  //     quantidade: 2,
+  //     preco: 3.5,
+  //     image: Guarana
+  //   },
+  //   {
+  //     id: "5",
+  //     name: "Guarana",
+  //     quantidade: 2,
+  //     preco: 3.5,
+  //     image: Guarana
+  //   },
+  // ]);
+  const setListaDeProdutos = useContext(ContextoCarrinho).adicionaItensCarrinho;
+    const listaDeProdutosCarrinho = useContext(ContextoCarrinho).listaDeProdutos;
+    const retiraItemCarrinho = useContext(ContextoCarrinho).retiraItemCarrinho;
+    
+    const [precoTotal,setPrecoTotal] = useState<number>()
+    const [value,setValue] = useState<number>()
+
+    useEffect(() => { 
+      calculaPrecoTotal()
+      
+    },[precoTotal])
+
+    useFocusEffect(
+      React.useCallback(() => {
+        setValue(Math.random());
+        calculaPrecoTotal()
+      }, [])
+    );
+    useEffect(() => { 
+    },[value])
+
+    function calculaPrecoTotal() {
+      let somaTotal = 0
+      listaDeProdutosCarrinho.map((item) => {
+          somaTotal += item.preco
+      });
+      setPrecoTotal(somaTotal);
+  };
+
+
 
   return (
 
@@ -70,10 +105,12 @@ export const Carrinho = () => {
         </View>
 
         <View style={{ flex: 1 }}>
-          < FlatList
-            data={carrinho}
-            renderItem={({ item }) => <CardItem produto={item} />}
-            keyExtractor={(item) => item.id}
+          <FlatList
+            data={listaDeProdutosCarrinho}
+            renderItem={({ item }) => 
+            <CardItem produto={item} />
+            }
+            keyExtractor={(item) => item.nome}
           />
         </View>
 
@@ -81,7 +118,8 @@ export const Carrinho = () => {
           <Text style={styles.totalText}>Total: R$</Text>
         </View>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={ ()=> console.log("finalizado")
+         }>
           <Text style={styles.subtitleText}>Finalizar Pedido</Text>
         </TouchableOpacity>
       </View>
