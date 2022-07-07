@@ -2,11 +2,14 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
 
+    gradient: {
+        flex: 1,
+    },
+
     container: {
         flex: 1,
         paddingTop: 60,
         paddingBottom: 30,
-        backgroundColor: "#F0F9F5"
     },
     input: {
         fontSize: 15,
@@ -16,7 +19,7 @@ export const styles = StyleSheet.create({
         width:300,
         height:40,
         margin:15,
-        marginLeft:30
+        marginLeft:30,
        
     },
     
@@ -41,14 +44,17 @@ export const styles = StyleSheet.create({
 
     },
     viewProdutos: {
-        flex: 1
+        flex: 1,
+        marginLeft: 20,
 
     },
     azulzin: {
-        backgroundColor: "#898AA6",
-        height: 70,
-        justifyContent: "center",
-        flexDirection: "row",
+        flexDirection:"row",
+        justifyContent:"space-between",
+        backgroundColor: '#898AA6',
+        borderColor: "#000000",  
+        borderWidth: 1.5,
+        height: 60,
     },
     lupa:{
         marginRight:40,

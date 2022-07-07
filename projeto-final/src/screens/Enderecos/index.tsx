@@ -97,7 +97,7 @@ export const Enderecos = ({ navigation }) => {
             style={styles.input}
             textContentType={"oneTimeCode"}
             keyboardType={"numeric"}
-            placeholder="Digite seu Username"
+            placeholder="Digite seu Id"
             onChangeText={(e) =>
               setDados({ ...dados, idUsuario: Number(e) })
             }
