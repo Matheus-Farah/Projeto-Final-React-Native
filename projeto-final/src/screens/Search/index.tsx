@@ -4,6 +4,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { styles } from "./style";
 
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { buscaListaProdutos } from "../../services/api";
 
 
 
@@ -15,32 +16,12 @@ interface Produtos {
     url: string
 }
 
-export const Search = () => {
+export const Search = ({navigation}) => {
     const [searchText, setSearchText] = useState('');
     
 
     const [produtos, setProdutos] = useState([
-        {
-            id: "1",
-            nome: "Absolut Elyx Vodka",
-            descricao: "Beba com moderação",
-            preco: 130,
-            url: "https://produits.bienmanger.com/30973-0w600h600_Absolut_Elyx_Vodka.jpg"
-        },
-        {
-            id: "2",
-            nome: "Guarana",
-            descricao: "Beba com moderação",
-            preco: 130,
-            url: "https://produits.bienmanger.com/30973-0w600h600_Absolut_Elyx_Vodka.jpg"
-        },
-        {
-            id: "3",
-            nome: "Coca Cola",
-            descricao: "Beba com moderação",
-            preco: 130,
-            url: "https://produits.bienmanger.com/30973-0w600h600_Absolut_Elyx_Vodka.jpg"
-        },
+        
         
         
 
@@ -48,6 +29,17 @@ export const Search = () => {
 
     const [list, setList] = useState(produtos);
 
+
+    useEffect(() => {
+
+        buscaListaProdutos().then((res) => {
+            setProdutos(res.data);
+        }).catch((err) => {
+            console.log(err);
+        }).finally(() => {
+
+        })
+    }, [])
 
     useEffect(() => {
         if (searchText === '') {
@@ -88,7 +80,9 @@ export const Search = () => {
                     numColumns={2}
                     data={list}
                     renderItem={({ item }) =>
-                        <TouchableOpacity style={styles.buttonProdutos}>
+                        <TouchableOpacity 
+                        style={styles.buttonProdutos}
+                        onPress={() => navigation.navigate('Produto', {produto: item})}>
                             <Image source={{ uri: item.url }} style={styles.imgMenor} />
                             <View >
                                 <Text style={[{ fontWeight: "bold" }]}>

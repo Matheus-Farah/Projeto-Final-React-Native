@@ -28,7 +28,7 @@ export interface Produtos {
 }
 
 
-export const Home = () => {
+export const Home = ({navigation}) => {
     const [produtoImg, setProdutoImg] = useState<ProdutosImagens[]>([
         {
             id: "1",
@@ -53,7 +53,7 @@ export const Home = () => {
     const setListaDeProdutos = useContext(ContextoCarrinho).adicionaItensCarrinho;
     const listaDeProdutosCarrinho = useContext(ContextoCarrinho).listaDeProdutos;
     const retiraItemCarrinho = useContext(ContextoCarrinho).retiraItemCarrinho;
-    const [listaDeProdutosNova,setListaDeProdutosNova] = useState(listaDeProdutosCarrinho)
+    const [listaDeProdutosNova, setListaDeProdutosNova] = useState(listaDeProdutosCarrinho)
 
     const listaDeProdutos: Produtos = {
         id: 0,
@@ -74,21 +74,21 @@ export const Home = () => {
         })
     }, [])
 
-    
-    
 
-    function lidaBotao (produto: Produtos){
+
+
+    function lidaBotao(produto: Produtos) {
         setListaDeProdutos(produto);
         console.log(listaDeProdutosCarrinho);
-        
-        
+
+
     }
 
 
     return (
 
         <LinearGradient style={styles.gradient} colors={['#37A8D9', '#E1F0F6']}>
-            
+
             <View style={styles.container}>
 
                 <View style={styles.header}>
@@ -121,18 +121,25 @@ export const Home = () => {
                         numColumns={2}
                         data={produtos}
                         renderItem={({ item }) =>
-                            <TouchableOpacity 
-                            style={styles.buttonProdutos}
-                            onPress={ () => lidaBotao(item)}
+                            <TouchableOpacity
+                                style={styles.buttonProdutos}
+                                onPress={() => navigation.navigate('Produto', {produto: item})}
                             >
+                                <TouchableOpacity
+                                onPress={() => lidaBotao(item)}
+                                >
+                                    <Image source={{ uri: "https://cdn-icons-png.flaticon.com/512/1828/1828817.png" }} style={{ width: 40, height: 40 }} />
+                                </TouchableOpacity>
                                 <Image source={{ uri: item.url }} style={styles.imgMenor} />
                                 <View>
+
                                     <Text style={[{ fontWeight: "bold" }]}>
                                         {item.preco}
                                     </Text>
                                     <Text >
                                         {item.nome}
                                     </Text>
+
                                 </View>
                             </TouchableOpacity>
                         }

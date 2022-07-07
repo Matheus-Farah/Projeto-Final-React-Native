@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Image, View, Text, TouchableOpacity } from "react-native";
 
 import Absolute from "../../assets/images/vodka.png";
+import { ContextoCarrinho } from "../../context/CarrinhoContext";
+import { Produtos } from "../Home";
 import { styles } from "./styles";
 
 export interface ProdutoEspecifico {
@@ -12,27 +14,30 @@ export interface ProdutoEspecifico {
   url: string;
 }
 
-export const Produto = ({ navigation }, produto: ProdutoEspecifico) => {
-  const [dados, setDados] = useState<ProdutoEspecifico>({
-    id: 0,
-    nome: "Vodka",
-    descricao:
-      "Elaborada a partir de ingredientes naturais os principais ingredientes da absolut vodka são água e o trigo de inverno do sul da suécia",
-    preco: 100,
-    url: "",
-  });
+export const Produto = ({ route, navigation }) => {
+
+  const {produto} = route.params;
+
+  const setListaDeProdutos = useContext(ContextoCarrinho).adicionaItensCarrinho;
+
+  function handleComprar(produto: Produtos) {
+    setListaDeProdutos(produto);
+}
 
   return (
     <View style={styles.container}>
       <View>
-        <Image source={Absolute} style={styles.image} />
+        <Image source={{uri: produto.url}} style={styles.image} />
       </View>
 
       <View style={styles.informacoes}>
-        <Text style={styles.textoNome}>{dados.nome}</Text>
-        <Text style={styles.textoPreco}>R$ {dados.preco}</Text>
-        <Text style={styles.descricao}>{dados.descricao}</Text>
-        <TouchableOpacity style={styles.botao}>
+        <Text style={styles.textoNome}>{produto.nome}</Text>
+        <Text style={styles.textoPreco}>R$ {produto.preco}</Text>
+        <Text style={styles.descricao}>{produto.descricao}</Text>
+        <TouchableOpacity 
+        style={styles.botao}
+        onPress={() => handleComprar(produto)}
+        >
           <Text style={styles.textBotao}>Comprar</Text>
         </TouchableOpacity>
       </View>

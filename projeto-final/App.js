@@ -26,6 +26,7 @@ function MyStack() {
       <Stack.Screen name="Login" component={Login} options={{headerShown: false}} />
       <Stack.Screen name="Cadastro" component={Cadastro} options={{headerShown: false}} />
       <Stack.Screen name="Enderecos" component={Enderecos} options={{headerShown: false}} />
+      <Stack.Screen name="Produto" component={Produto} options={{headerShown: false}} />
       <Stack.Screen name="Home" component={MyRoutes} options={{headerShown: false}} />
     </Stack.Navigator>
   );
@@ -36,7 +37,7 @@ export default function App() {
   return (
     <ProvedorCarrinho>
     <NavigationContainer>
-      <Produto/>
+      <MyStack/>
     </NavigationContainer>
     </ProvedorCarrinho>
   );
