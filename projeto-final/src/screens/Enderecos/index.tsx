@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import {
   Image,
   KeyboardAvoidingView,
@@ -14,6 +14,7 @@ import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
 import { CadastrarEndereco } from "../../services/api";
+import { TokenContext } from "../../context/TokenContext";
 
 
 export interface EnderecoType {
@@ -25,12 +26,15 @@ export interface EnderecoType {
 
 export const Enderecos = ({ navigation }) => {
  
+  const token = useContext(TokenContext).token;
   const [dados, setDados] = useState<EnderecoType>({
     cep: '',
     numCasa: '',
     complemento: '',
-    idUsuario: 0,
+    idUsuario: Number(token.split("-")[0]),
   });
+
+  
 
   function cadastrarEndereco() {
     setDados({
@@ -119,8 +123,8 @@ export const Enderecos = ({ navigation }) => {
             onChangeText={(e) => setDados({ ...dados , complemento: e })}
           />
 
-          <Text style={styles.inputTitle}>ID do Usuário:</Text>
-          <TextInput
+          {/*<Text style={styles.inputTitle}>ID do Usuário:</Text>
+           <TextInput
             style={styles.input}
             textContentType={"oneTimeCode"}
             keyboardType={"numeric"}
@@ -128,7 +132,7 @@ export const Enderecos = ({ navigation }) => {
             onChangeText={(e) =>
               setDados({ ...dados, idUsuario: Number(e) })
             }
-          />
+          /> */}
 
           <TouchableOpacity
             style={styles.button}

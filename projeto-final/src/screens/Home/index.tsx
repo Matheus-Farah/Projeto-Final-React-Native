@@ -10,6 +10,7 @@ import Coca2 from "../../assets/images/coca2.png";
 import Cordeirinho from "../../assets/images/Cordeirinho.png"
 import { buscaListaProdutos } from "../../services/api";
 import { ContextoCarrinho } from "../../context/CarrinhoContext";
+import { TokenContext } from "../../context/TokenContext";
 
 
 
@@ -74,7 +75,7 @@ export const Home = ({navigation}) => {
         })
     }, [])
 
-
+    
 
 
     function lidaBotao(produto: Produtos) {

@@ -3,6 +3,8 @@ import { UsuarioType } from "../screens/Cadastro";
 import jwt_decode from "jwt-decode";
 import { UserType } from "../screens/Login";
 import { EnderecoType } from "../screens/Enderecos";
+import { useContext } from "react";
+import { TokenContext } from "../context/TokenContext";
 
 const api = axios.create({
     baseURL: 'https://api-cdelivery.herokuapp.com',
@@ -20,11 +22,19 @@ export function buscaProdutoEspecifico (index: string) {
     return api.get(url);
 }
 
+export async function buscaCliente (index: string) {
+    const url = `cliente/${index}/`;
+    const response = await api.get(url)
+    return response;
+}
+
 
 
 export async function Cadastrar (usuario: UsuarioType) {
     const url = `/cliente`;
     const response = await api.post(`/cliente`, usuario);
+    console.log(response.data);
+    
     //handleSetToken(response.headers.authorization);
     return response;
 }
@@ -37,10 +47,13 @@ export async function CadastrarEndereco (endereco: EnderecoType) {
 export async function Logar (usuario: UserType) {
     
     const response = await api.post(`/login`, usuario);
-    const decoded = jwt_decode(response.headers.authorization);
-    console.log(decoded);
+    const decoded: string = jwt_decode(response.headers.authorization);
+    const decodedSubmit: string = String(decoded.sub)
+    console.log(decodedSubmit);
     
-    //handleSetToken(response.headers.authorization);
-    return response;
+    //console.log(decodedSubmit);
+    
+    
+    return decodedSubmit;
 }
 
