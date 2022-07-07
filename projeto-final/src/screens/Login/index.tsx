@@ -1,29 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, StyleSheet, Animated, Keyboard, } from "react-native";
-import {Logar} from "../../services/api"
+import { Logar } from "../../services/api"
 import { LinearGradient } from 'expo-linear-gradient';
-import {Icon} from 'react-native-vector-icons';
+import { Icon } from 'react-native-vector-icons';
 
 import { styles } from "./styles";
 
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
+import { TokenContext } from "../../context/TokenContext";
 
 export interface UserType {
     email: string,
     senha: string
 }
 
-export const Login = ({navigation}) => {
+
+
+export const Login = ({ navigation }) => {
 
     const [offset] = useState(new Animated.ValueXY({ x: 0, y: 80 }))
     const [opacity] = useState(new Animated.Value(0));
 
-    const [logo] = useState(new Animated.ValueXY({x: 170, y: 195}))
+    const [logo] = useState(new Animated.ValueXY({ x: 170, y: 195 }))
     const [usuario, setUsuario] = useState({
         email: "",
         senha: ""
-    });  
-        
+    });
+
 
     useEffect(() => {
         const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
@@ -46,50 +49,54 @@ export const Login = ({navigation}) => {
     }, []);
 
 
-        function keyboardDidShow(){
-            
-            Animated.parallel([
-                Animated.timing(logo.x, {
-                    toValue: 55,
-                    duration: 100,
-                    useNativeDriver: false
-                }),
-                Animated.timing(logo.y, {
-                    toValue: 60,
-                    duration: 100,
-                    useNativeDriver: false
-                }),
+    function keyboardDidShow() {
 
-            ]).start();
+        Animated.parallel([
+            Animated.timing(logo.x, {
+                toValue: 55,
+                duration: 100,
+                useNativeDriver: false
+            }),
+            Animated.timing(logo.y, {
+                toValue: 60,
+                duration: 100,
+                useNativeDriver: false
+            }),
 
-        }
+        ]).start();
 
-        function keyboardDidHide(){
-            Animated.parallel([
-                Animated.timing(logo.x, {
-                    toValue: 170,
-                    duration: 100,
-                    useNativeDriver: false
-                }),
-                Animated.timing(logo.y, {
-                    toValue: 195,
-                    duration: 100,
-                    useNativeDriver: false
-                }),
+    }
 
-            ]).start();
-        }
+    function keyboardDidHide() {
+        Animated.parallel([
+            Animated.timing(logo.x, {
+                toValue: 170,
+                duration: 100,
+                useNativeDriver: false
+            }),
+            Animated.timing(logo.y, {
+                toValue: 195,
+                duration: 100,
+                useNativeDriver: false
+            }),
+
+        ]).start();
+    }
+
+    const HandleSetToken = useContext(TokenContext).HandleSetToken;
+    const token = useContext(TokenContext).token;
+    async function login() {
+
+
         
-        function login() {
-            
-            console.log(usuario);
-            
-            Logar(usuario)
-            .then(() => navigation.navigate("Home"))
-            .catch(() => console.log("deu erro"));
-            
-        }
+        Logar(usuario)
+            .then((res) => [HandleSetToken(res),navigation.navigate('Home')])
+            .catch(() => console.log("deu erro"))
 
+        
+
+    }
+    
 
     return (
 
@@ -100,7 +107,7 @@ export const Login = ({navigation}) => {
                     Cordeirinho Delivery
                 </Text>
             </View>
-            
+
             <KeyboardAvoidingView style={styles.background}>
                 <View style={styles.containerLogo}>
                     <Animated.Image
@@ -131,16 +138,16 @@ export const Login = ({navigation}) => {
                     <TextInput
                         style={styles.input}
                         placeholder="Senha"
-                        secureTextEntry={true}                    
+                        secureTextEntry={true}
                         textContentType={"password"}
-                        onChangeText={(e) => setUsuario({ ...usuario, senha: e })}                  
-                    />                    
+                        onChangeText={(e) => setUsuario({ ...usuario, senha: e })}
+                    />
                 </Animated.View>
                 <View>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={ () => login()}
-                        >
+                        onPress={() => login()}
+                    >
                         <Text style={{ fontWeight: "bold" }}>Login</Text>
                     </TouchableOpacity>
                 </View>
@@ -151,8 +158,8 @@ export const Login = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.subtitle}>
-                    <TouchableOpacity 
-                    onPress={ () => navigation.navigate("Cadastro")}
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("Cadastro")}
                     >
                         <Text style={[styles.subtitleText, { borderBottomWidth: 2 }]}>Cadastre-se aqui</Text>
                     </TouchableOpacity>
@@ -162,4 +169,6 @@ export const Login = ({navigation}) => {
 
 
     )
+
+    
 }

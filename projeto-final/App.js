@@ -10,6 +10,7 @@ import { Routes } from './src/routes';
 import { ProvedorCarrinho } from './src/context/CarrinhoContext';
 import { Search } from './src/screens/Search';
 import { Produto } from './src/screens/Produto';
+import { ProvedorToken, TokenContext } from './src/context/TokenContext';
 
 
 
@@ -35,11 +36,17 @@ function MyStack() {
 export default function App() {
   
   return (
-    <ProvedorCarrinho>
+    
+    
     <NavigationContainer>
+      <ProvedorCarrinho>
+      <ProvedorToken>
       <MyStack/>
+      </ProvedorToken>
+      </ProvedorCarrinho>
     </NavigationContainer>
-    </ProvedorCarrinho>
+    
+    
   );
 }
 

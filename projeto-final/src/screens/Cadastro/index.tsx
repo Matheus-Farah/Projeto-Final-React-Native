@@ -51,7 +51,7 @@ export const Cadastro = ({ navigation }) => {
         setDados({ ...dados, usuario: { username: usuarioTransfer.username, email: usuarioTransfer.email, senha: usuarioTransfer.senha } })
         console.log(dados);
         Cadastrar(dados)
-            .then(() => navigation.navigate("Home"))
+            .then(() => navigation.navigate("Login"))
             .catch(() => console.log("deu erro"));
     }
 
