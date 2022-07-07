@@ -23,7 +23,8 @@ export interface Produtos {
     nome: string,
     descricao: string,
     preco: number,
-    url: string
+    url: string,
+    quantidade?: number
 }
 
 
@@ -52,7 +53,7 @@ export const Home = () => {
     const setListaDeProdutos = useContext(ContextoCarrinho).adicionaItensCarrinho;
     const listaDeProdutosCarrinho = useContext(ContextoCarrinho).listaDeProdutos;
     const retiraItemCarrinho = useContext(ContextoCarrinho).retiraItemCarrinho;
-    const total = useContext(ContextoCarrinho).precoTotal;
+    const [listaDeProdutosNova,setListaDeProdutosNova] = useState(listaDeProdutosCarrinho)
 
     const listaDeProdutos: Produtos = {
         id: 0,
@@ -73,16 +74,12 @@ export const Home = () => {
         })
     }, [])
 
+    
+    
 
     function lidaBotao (produto: Produtos){
-        // if (carrinho) {
-        //     retiraItemCarrinho(produto.id);
-        // } else {
-        //     setListaDeProdutos(produto);
-        // }
         setListaDeProdutos(produto);
         console.log(listaDeProdutosCarrinho);
-        console.log(total);
         
         
     }
