@@ -2,12 +2,14 @@ import React, { createContext, useEffect, useState } from "react";
 import { Produtos } from "../../screens/Home";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert } from "react-native";
 
 export interface TipoContextoCarrinho {
     listaDeProdutos?: Produtos[],
     adicionaItensCarrinho: (produto: Produtos) => void;
     precoTotal: number,
-    retiraItemCarrinho: (id: number) => void
+    retiraItemCarrinho: (id: number) => void,
+    finalizarPedido: () => void
 }
 
 export const ContextoCarrinho = createContext<TipoContextoCarrinho>({
@@ -21,7 +23,8 @@ export const ContextoCarrinho = createContext<TipoContextoCarrinho>({
     }],
     adicionaItensCarrinho: (produto: Produtos) => { },
     precoTotal: 0,
-    retiraItemCarrinho: (id: number) => { }
+    retiraItemCarrinho: (id: number) => { },
+    finalizarPedido: () => { }
 })
 
 export const ProvedorCarrinho = ({ children }) => {
@@ -41,7 +44,7 @@ export const ProvedorCarrinho = ({ children }) => {
     function calculaPrecoTotal() {
         let somaTotal = 0
         listaDeProdutos.length !== 0 && listaDeProdutos.map((item) => {
-            somaTotal += item.preco*item.quantidade
+            somaTotal += item.preco * item.quantidade
         });
         setPrecoTotal(somaTotal);
     };
@@ -54,20 +57,32 @@ export const ProvedorCarrinho = ({ children }) => {
                 if (produto.id === id) {
                     if (produto.quantidade === 1) {
                         let novoCarrinho = listaDeProdutos.filter((produto) => {
-                                return produto.id !== id
-                            });
-                            setProdutos(novoCarrinho);
-                        }else {
-                            produto.quantidade -= 1;
-                        }
+                            return produto.id !== id
+                        });
+                        setProdutos(novoCarrinho);
+                    } else {
+                        produto.quantidade -= 1;
                     }
-             })
+                }
+            })
         }
+    };
+
+    function finalizarPedido() {
 
         
+        Alert.alert(
+        "Cordeirinho Delivery",
+        "Seu pedido foi finalizado!",
+        [
+            { text: "Fechar", onPress: () => console.log("Pedido foi Finalizado") }
+          ]
+        );
 
 
 
+        setProdutos([]);
+        storeData([])
 
     };
 
@@ -120,7 +135,8 @@ export const ProvedorCarrinho = ({ children }) => {
                 listaDeProdutos,
                 adicionaItensCarrinho,
                 precoTotal,
-                retiraItemCarrinho
+                retiraItemCarrinho,
+                finalizarPedido
             }}
         >
             {children}

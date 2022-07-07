@@ -10,16 +10,16 @@ export const styles = StyleSheet.create({
     },
     header: {
         flexDirection: "row",
-        backgroundColor: '#898AA6',
-        borderColor: "#000000",  
-        borderWidth: 1.5,      
+        // backgroundColor: '#898AA6',
+        // borderColor: "#000000",  
+        // borderWidth: 1.5,      
         
     },
     text: {
         width: '83%',
         fontWeight: 'bold',
         fontSize: 25,
-        paddingLeft: 10,
+        paddingLeft: 20,
     },
     total: {
         backgroundColor: '#898989',

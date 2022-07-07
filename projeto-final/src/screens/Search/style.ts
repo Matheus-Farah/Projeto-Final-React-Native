@@ -26,11 +26,12 @@ export const styles = StyleSheet.create({
     buttonProdutos: {
         backgroundColor: "#aaa",
         width: 150,
-        height: 190,
+        height: 200,
         alignItems: "center",
         marginVertical: 9,
         marginHorizontal: 15,
         borderRadius: 8,
+        paddingBottom:2
 
 
 
@@ -51,12 +52,13 @@ export const styles = StyleSheet.create({
     azulzin: {
         flexDirection:"row",
         justifyContent:"space-between",
-        backgroundColor: '#898AA6',
-        borderColor: "#000000",  
-        borderWidth: 1.5,
+        // backgroundColor: '#898AA6',
+        // borderColor: "#000000",  
+        // borderWidth: 1.5,
         height: 60,
     },
     lupa:{
+        color: 'black',
         marginRight:40,
         marginTop:20
     }

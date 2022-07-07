@@ -23,47 +23,11 @@ export interface ItensCarrinhoProps {
 
 
 export const Carrinho = () => {
-  // const [carrinho, setCarrinho] = useState<Produtos[]>([
-  //   {
-  //     id: "1",
-  //     name: "Coca-cola",
-  //     quantidade: 2,
-  //     preco: 3.5,
-  //     image: Coca
-  //   },
-  //   {
-  //     id: "2",
-  //     name: "Guarana",
-  //     quantidade: 2,
-  //     preco: 3.5,
-  //     image: Guarana
-  //   },
-  //   {
-  //     id: "3",
-  //     name: "Guarana",
-  //     quantidade: 2,
-  //     preco: 3.5,
-  //     image: Guarana
-  //   },
-  //   {
-  //     id: "4",
-  //     name: "Guarana",
-  //     quantidade: 2,
-  //     preco: 3.5,
-  //     image: Guarana
-  //   },
-  //   {
-  //     id: "5",
-  //     name: "Guarana",
-  //     quantidade: 2,
-  //     preco: 3.5,
-  //     image: Guarana
-  //   },
-  // ]);
   const setListaDeProdutos = useContext(ContextoCarrinho).adicionaItensCarrinho;
     const listaDeProdutosCarrinho = useContext(ContextoCarrinho).listaDeProdutos;
     const retiraItemCarrinho = useContext(ContextoCarrinho).retiraItemCarrinho;
-    
+    const finalizarPedido = useContext(ContextoCarrinho).finalizarPedido;
+
     const [precoTotal,setPrecoTotal] = useState<number>()
     const [value,setValue] = useState<number>()
 
@@ -114,11 +78,11 @@ export const Carrinho = () => {
           />
         </View>
 
-        <View style={styles.total}>
+        {/* <View style={styles.total}>
           <Text style={styles.totalText}>Total: R$</Text>
-        </View>
+        </View> */}
 
-        <TouchableOpacity style={styles.button} onPress={ ()=> console.log("finalizado")
+        <TouchableOpacity style={styles.button} onPress={ ()=> finalizarPedido()
          }>
           <Text style={styles.subtitleText}>Finalizar Pedido</Text>
         </TouchableOpacity>

@@ -81,7 +81,6 @@ export const Enderecos = ({ navigation }) => {
             }
           />
 
-          REALIZAR TRATAMENTO DE SENHA NO INPUT */}
 
           <Text style={styles.inputTitle}>Complemento:</Text>
           <TextInput

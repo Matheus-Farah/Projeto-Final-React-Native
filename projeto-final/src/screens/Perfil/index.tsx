@@ -17,7 +17,7 @@ export interface ClienteType {
     dataNascimento: string,
     pedidos: [],
     usuario: {
-        idUsuario: 4,
+        idUsuario: number,
         email: string,
         senha: string,
         username: string,
@@ -50,7 +50,6 @@ export const Perfil = ({ navigation }) => {
             buscaCliente(token.split("-")[0]).then((res) => {
                 if (cliente === undefined) {
                 setCliente(res.data);
-                console.log(cliente);
                 }else{
                     
                 }

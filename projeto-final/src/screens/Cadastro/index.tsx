@@ -134,7 +134,6 @@ export const Cadastro = ({ navigation }) => {
 
                     <Text style={styles.inputTitle}>Data de Nascimento:</Text>
                     <TextInputMask style={styles.input}
-                        
                         type={'datetime'}
                         options={{
                             format: 'yyyy-MM-dd',
@@ -148,8 +147,8 @@ export const Cadastro = ({ navigation }) => {
                     />
 
                     <Text style={styles.inputTitle}>Email:</Text>
-                    <TextInputMask
-                        type={"custom"}
+                    <TextInput
+                       
                         style={styles.input}
                         textContentType={"emailAddress"}
                         keyboardType={"email-address"}
@@ -160,8 +159,8 @@ export const Cadastro = ({ navigation }) => {
                     />
 
                     <Text style={styles.inputTitle}>Senha:</Text>
-                    <TextInputMask
-                        type={"custom"}
+                    <TextInput
+                        
                         style={styles.input}
                         textContentType={"password"}
                         keyboardType={"visible-password"}
@@ -172,8 +171,8 @@ export const Cadastro = ({ navigation }) => {
                     />
 
                     <Text style={styles.inputTitle}>Nome de Usuário:</Text>
-                    <TextInputMask
-                    type={"custom"}
+                    <TextInput
+                    
                         style={styles.input}
                         textContentType={"username"}
                         keyboardType={"default"}

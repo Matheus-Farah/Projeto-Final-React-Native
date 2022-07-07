@@ -55,7 +55,8 @@ export const CardItem = ({ produto, ...rest }: ItemProps) => {
   
 
   return (
-    <TouchableOpacity style={styles.container} {...rest}>
+    <TouchableOpacity style={styles.container} {...rest}
+    >
       <View style={styles.card}>
        
         <View >

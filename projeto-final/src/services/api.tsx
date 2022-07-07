@@ -49,7 +49,7 @@ export async function Logar (usuario: UserType) {
     const response = await api.post(`/login`, usuario);
     const decoded: string = jwt_decode(response.headers.authorization);
     const decodedSubmit: string = String(decoded.sub)
-    console.log(decodedSubmit);
+    
     
     //console.log(decodedSubmit);
     

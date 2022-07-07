@@ -16,9 +16,9 @@ export const styles = StyleSheet.create({
     header: {
         flexDirection:"row",
         justifyContent:"space-between",
-        backgroundColor: '#898AA6',
-        borderColor: "#000000",  
-        borderWidth: 1.5,
+        // backgroundColor: '#898AA6',
+        // borderColor: "#000000",  
+        // borderWidth: 1.5,
 
 
     },
@@ -32,15 +32,15 @@ export const styles = StyleSheet.create({
         width: 300,
         height: 300,
         borderRadius: 9,
-        marginHorizontal: 30,
-        marginVertical:30,      
+        marginHorizontal: 20,
+        marginVertical:5,      
     },
 
     textProduto: {
         fontSize: 25,
         fontWeight: "bold",
         alignSelf: "baseline",
-        paddingLeft: 10,
+        paddingLeft: 20,
     },
 
     buttonProdutos: {

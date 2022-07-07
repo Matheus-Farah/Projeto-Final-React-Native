@@ -16,6 +16,7 @@ import Coca from "../../assets/images/coca.png";
 import Vodka from "../../assets/images/vodka.png";
 import Vodkalimao from "../../assets/images/vodka2.png";
 import Coca2 from "../../assets/images/coca2.png";
+import Bebida3 from "../../assets/images/desconhecido.jpeg";
 import Cordeirinho from "../../assets/images/Cordeirinho.png";
 import { buscaListaProdutos } from "../../services/api";
 import { ContextoCarrinho } from "../../context/CarrinhoContext";
@@ -46,6 +47,10 @@ export const Home = ({ navigation }) => {
       id: "2",
       image: Vodkalimao,
     },
+    {
+      id:"3",
+      image: Bebida3
+    }
   ]);
 
   const [produtos, setProdutos] = useState([]);
@@ -85,7 +90,6 @@ export const Home = ({ navigation }) => {
 
   function lidaBotao(produto: Produtos) {
     setListaDeProdutos(produto);
-    console.log(listaDeProdutosCarrinho);
   }
 
   return (
@@ -93,7 +97,7 @@ export const Home = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.textProduto}>Promoções</Text>
+            <Text style={styles.textProduto}>Promoções:</Text>
           </View>
           <View>
             <Image source={Cordeirinho} style={styles.cordeirinho} />
@@ -107,7 +111,7 @@ export const Home = ({ navigation }) => {
             data={produtoImg}
             renderItem={({ item }) => (
               <View style={styles.viewImg}>
-                {/* <Image source={item.image} style={styles.img} /> */}
+                <Image source={ item.image } style={styles.img} /> 
               </View>
             )}
             keyExtractor={(item) => item.id}
@@ -139,7 +143,7 @@ export const Home = ({ navigation }) => {
                   </TouchableOpacity>
                 </ImageBackground>
                 <View>
-                  <Text style={[{ fontWeight: "bold" }]}>{item.preco}</Text>
+                  <Text style={[{ fontWeight: "bold" }]}>R$ {item.preco}</Text>
                   <Text>{item.nome}</Text>
                 </View>
               </TouchableOpacity>
