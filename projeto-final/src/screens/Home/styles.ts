@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     buttonProdutos: {
         backgroundColor: "#aaa",
         width: 150,
-        height: 190,
+        height: 210,
         alignItems: "center",
         marginVertical: 9,
         marginHorizontal: 15,
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
 
     imgMenor: {
         width: 130,
-        height: '70%',
+        height: 130,
         marginVertical: 5,
         borderRadius:15,       
     },

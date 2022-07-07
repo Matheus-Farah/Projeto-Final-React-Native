@@ -69,19 +69,6 @@ export const Enderecos = ({ navigation }) => {
             }
           />
           {/* REALIZAR TRATAMENTO NO PLACEHOLDER */}
-
-          {/* <Text style={styles.inputTitle}>Rua:</Text>
-          <TextInput
-            style={styles.input}
-            textContentType={"addressCity"}
-            keyboardType={"default"}
-            placeholder={"Digite o nome da rua:"}
-            onChangeText={(e) => setDados({ ...dados, rua: e })}
-            returnKeyType="next"
-            // REALIZAR SUBMITEDITING PARA O SECOND INPUT
-            // onSubmitEditing={() => {secondTextInputMask.focus(); }}
-            blurOnSubmit={false}
-          /> */}
           
           <Text style={styles.inputTitle}>Número:</Text>
           <TextInput
@@ -94,24 +81,6 @@ export const Enderecos = ({ navigation }) => {
             }
           />
 
-          {/* <Text style={styles.inputTitle}>Bairro:</Text>
-
-          <TextInput
-            style={styles.input}
-            textContentType={"name"}
-            keyboardType={"default"}
-            placeholder={"Digite seu Bairro"}
-            onChangeText={(e) => setDados({ ...dados, bairro: e })}
-          />
-
-          <Text style={styles.inputTitle}>Cidade:</Text>
-          <TextInput
-            style={styles.input}
-            textContentType={"addressCityAndState"}
-            keyboardType={"default"}
-            placeholder={"Digite sua Cidade e Estado"}
-            onChangeText={(e) => ({ ...dados, Cidade: e })}
-          />
           REALIZAR TRATAMENTO DE SENHA NO INPUT */}
 
           <Text style={styles.inputTitle}>Complemento:</Text>
