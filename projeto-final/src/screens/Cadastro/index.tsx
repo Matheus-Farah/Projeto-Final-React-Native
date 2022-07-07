@@ -27,7 +27,12 @@ export const Cadastro = ({ navigation }) => {
     const [cpf, setCpf] = useState('');
     const [data, setData] = useState('');
 
-    const cpf_2 = useRef();
+    const ref_input2: any = useRef<TextInputMask>(null);
+    const ref_input3: any = useRef<TextInputMask>(null);
+    const ref_input4: any = useRef<TextInputMask>(null);
+    const ref_input5: any = useRef<TextInputMask>(null);
+    const ref_input6: any = useRef<TextInputMask>(null);
+    const ref_input7: any = useRef<TextInputMask>(null);
 
     const [dados, setDados] = useState<UsuarioType>({
         nome: "",
@@ -66,7 +71,7 @@ export const Cadastro = ({ navigation }) => {
         <LinearGradient style={styles.gradient} colors={['#37A8D9', '#E1F0F6']}>
 
             <KeyboardAvoidingView style={styles.container}>
-                
+
                 <View style={styles.header}>
                     <Image
                         source={Cordeirinho}
@@ -81,34 +86,38 @@ export const Cadastro = ({ navigation }) => {
                         </Text>
                     </View>
                 </View>
-                
+
                 <ScrollView>
                     <Text style={styles.inputTitle}>Nome:</Text>
-                    <TextInput
+                    <TextInput                  
                         style={styles.input}
                         textContentType={"name"}
                         keyboardType={"default"}
                         placeholder={"Digite seu nome:"}
                         onChangeText={(e) => setDados({ ...dados, nome: e })}
-                        returnKeyType="next"
+                        returnKeyType="done"
                         // REALIZAR SUBMITEDITING PARA O SECOND INPUT
-                        // onSubmitEditing={() => {cpf_2.current.focus(); }}
-                        blurOnSubmit={false}
+                        // onSubmitEditing={() => ref_input2.current?.focus()}
+                        blurOnSubmit={true}
                     />
 
                     <Text style={styles.inputTitle}>CPF:</Text>
                     <TextInputMask style={styles.input}
-                        // REALIZAR SUBMITEDITING PARA O SECOND INPUT
+                        // REALIZAR SUBMITEDITING PARA O SECOND INPUT (TEXTINPUTMASK NÃO ACEITA O ONSUBIMIT)
                         // ref={(input_2) => {secondTextInputMask = input; }}
-                        // ref ={cpf_2}    
-                        type ={'cpf'}
-                        value ={cpf}
-                        placeholder ={"___.___.___-__"}
-                        onChangeText ={(e) => setDados({ ...dados, cpf: e.replace(/\D+/g, '') })}
+                        // ref ={cpf_2}
+                        keyboardType={"numeric"}    
+                        type={'cpf'}
+                        value={cpf}
+                        placeholder={"___.___.___-__"}
+                        onChangeText={(e) => setDados({ ...dados, cpf: e.replace(/\D+/g, '') })}
+                        // onSubmitEditing={() => ref_input3.current?.focus()}
+                        // ref={ref_input2}
                     />
-                    
+
                     <Text style={styles.inputTitle}>Telefone:</Text>
-                    <TextInputMask style={styles.input}
+                    <TextInputMask style={styles.input}                                              
+                        keyboardType = "numeric"
                         type={'cel-phone'}
                         options={{
                             maskType: 'BRL',
@@ -117,45 +126,61 @@ export const Cadastro = ({ navigation }) => {
                         }}
                         value={cell}
                         placeholder={"(__)_____-____"}
+                        
                         onChangeText={(e) => setDados({ ...dados, telefone: e.replace(/\D+/g, '') })}
+                        // onSubmitEditing={() => ref_input4.current?.focus()}
+                        // ref={ref_input3}
                     />
 
                     <Text style={styles.inputTitle}>Data de Nascimento:</Text>
                     <TextInputMask style={styles.input}
+                        
                         type={'datetime'}
                         options={{
                             format: 'yyyy-MM-dd',
                         }}
                         value={data}
-                        onChangeText={(e) => setDados({ ...dados, dataNascimento: e })}
                         placeholder={"yyyy-mm-dd"}
+                        onChangeText={(e) => setDados({ ...dados, dataNascimento: e })}
+                        // onSubmitEditing={() => ref_input5.current?.focus()}
+                        // ref={ref_input4}
+                        
                     />
 
                     <Text style={styles.inputTitle}>Email:</Text>
-                    <TextInput
+                    <TextInputMask
+                        type={"custom"}
                         style={styles.input}
                         textContentType={"emailAddress"}
                         keyboardType={"email-address"}
                         placeholder={"SeuEmail@email.com"}
                         onChangeText={(e) => setUsuario({ ...usuarioTransfer, email: e })}
+                        // onSubmitEditing={() => ref_input6.current?.focus()}
+                        // ref={ref_input5}
                     />
 
                     <Text style={styles.inputTitle}>Senha:</Text>
-                    <TextInput
+                    <TextInputMask
+                        type={"custom"}
                         style={styles.input}
                         textContentType={"password"}
                         keyboardType={"visible-password"}
                         placeholder={"Digite sua senha:"}
                         onChangeText={(e) => setUsuario({ ...usuarioTransfer, senha: e })}
+                        // onSubmitEditing={() => ref_input7.current?.focus()}
+                        // ref={ref_input6}
                     />
 
                     <Text style={styles.inputTitle}>Nome de Usuário:</Text>
-                    <TextInput
+                    <TextInputMask
+                    type={"custom"}
                         style={styles.input}
                         textContentType={"username"}
                         keyboardType={"default"}
                         placeholder={"Digite seu Username"}
                         onChangeText={(e) => setUsuario({ ...usuarioTransfer, username: e })}
+                        // onSubmitEditing={() => ref_input7.current?.focus()}
+                        // ref={ref_input7}
                     />
 
                     <TouchableOpacity
